@@ -2,6 +2,7 @@
 //El codigo comentado se debe  actualizar cuando este  la dasboard lista
 
 //cambio casa 
+//cambio trabajo
 
   session_start();
  
