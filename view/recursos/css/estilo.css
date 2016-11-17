@@ -31,5 +31,20 @@
   margin:43px;
  }
  #loguear{
-   margin:auto;
+   margin-left:10%;
+   margin-right: 10%
+
  }
+ input{
+   margin-bottom: 10%;
+   margin-top: 10%;
+ }
+ .reg{
+  margin: 0px
+ }
+.btreg{
+  height: 70px;
+  width: 100%;
+  border-radius: 5px;
+  
+}

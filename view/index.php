@@ -2,7 +2,6 @@
 //El codigo comentado se debe  actualizar cuando este  la dasboard lista
 
 //cambio casa 
-//cambio trabajo
 
   session_start();
  
@@ -14,10 +13,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="recursos/css/estilo.css">
+  <link rel="stylesheet" type="text/css" href="recursos/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="recursos/plugins/sweetalert/dist/sweetalert.css">
   <link rel="stylesheet" href="recursos/plugins/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="recursos/plugins/bootstrap/css/bootstrap.min.css">
   <script src="recursos/plugins/bootstrap/js/jquery.min.js"></script>
   <script src="recursos/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="recursos/plugins/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="recursos/plugins/sweetalert/dist/sweetalert.min.js"></script>
+ <script type="text/javascript">
+    $(document).ready( function () {
+              $('#datatable').DataTable({  
+               "language": {               
+               "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"       
+                }
+                });
+ <?php
+
+                    if(isset($_GET["m"],$_GET["tm"])){
+                  echo "swal({ title: '',   text: '".base64_decode($_GET["m"])."',   type: '".base64_decode($_GET["tm"])."',  imageUrl: 'recursos/logos/logo.png'});";
+
+                  }
+      ?>
+   });
+ </script>
   
 </head>
 <body>
@@ -54,7 +73,7 @@
             <li><a href="#"  data-toggle="modal" data-target="#myModal"><i class="fa fa-sign-in" aria-hidden="true"></i> Iniciar Sesión</a></li>
        <?php }else{
           ?>
-          <li><a href="#" <i class="fa fa-sign-out" aria-hidden="true"></i><i class="fa fa-sign-in" aria-hidden="true"></i> Cerrar Sesión</a></li>
+          <li><a href="cerrarsesion.php"> <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</a></li>
       <?php  } ?>
         
       </ul>
@@ -121,23 +140,9 @@
   </div>
 </div><br>
  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog" >
-    <div id="mimodal" class="modal-dialog modal-md" width="410" >     
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <img  id="imgmodal" src="recursos/logos/logo.png" class="img-rounded" alt="Cinque Terre" width="504" >
-      <form>
-      <div id="loguear"class="row">
-      <div class="col-sm-8">
-      <label for="focusedInput">Usuario</label>
-      <input class="form-control" id="focusedInput" type="email" required>
-      <label for="focusedInput">Clave</label>
-      <input class="form-control" id="focusedInput" type="password" required>
-      </div>
-      </div>
-      </form>
+  <div class="modal fade" id="myModal" role="dialog" >         
           
-          
-         
+   <?php include_once("logueo.php") ?>      
        
     </div>
   </div>
