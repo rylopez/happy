@@ -48,3 +48,14 @@
   border-radius: 5px;
   
 }
+.iconmenu {
+  text-decoration: none !important;
+  color: white;
+  margin-left: 80% !important;
+ 
+  
+}
+#menu{
+  font-size: 45px;
+  margin-top: 5px
+}
