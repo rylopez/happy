@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="Es">
 <head>
-  <title>Happy Sex and Live</title>
+  <title>Happy Sex and Life</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="recursos/css/estilo.css">
@@ -35,6 +35,15 @@
 
                   }
       ?>
+       $('.menu a').hover(function() {
+                $(this).stop().animate({
+                   opacity: 1
+                 }, 200);
+                    }, function() {
+               $(this).stop().animate({
+                opacity: 0.3
+                 }, 200);
+              });
    });
  </script>
   
@@ -42,18 +51,46 @@
 <body>
 
 <nav class="navbar navbar-inverse" >
-   <a  href="#"><img src="recursos/logos/logo.png" style="width: 10%;"></a>
+   <a  href="#"><img src="recursos/logos/logo.png" style="width: 10%;"></a> 
+   <?php
+   if(!isset($_SESSION["id_usuario"])){  
+            }else{ ?>
+    <div>
+    <a  type="button" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a href="#">Actualizar mi perfil</a></li>
+      <li class="divider"></li>
+      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
+    </ul>
+    </div>
+  
+  <?php } ?>
   <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
    
  
-   <ul class="dropdown-menu">
-      <li class="dropdown-header">Dropdown header 1</li>
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-      <li class="divider"></li>
-      <li class="dropdown-header">Dropdown header 2</li>
-      <li><a href="#">About Us</a></li>
+   <ul id="mimenu" class="dropdown-menu">
+      <div class="menu">
+            <a class="yellow" href="#"><i id ="iconos" class="fa fa-home iconos" aria-hidden="true"></i><h4 class="letramenu"> Inicio</h4></a>
+            <a class="green" href="#"><i id ="iconos" class="fa fa-venus" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellas </h4></a>
+            <a class="pink" href="#"><i id="iconos" class="fa fa-mars" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellos</h4></a>
+            <a class="purple" href="#"><i id="iconos" class="fa fa-transgender-alt" aria-hidden="true"></i><h4 class="letramenu"> Sexo Inteligente</h4></a>
+             <?php 
+           
+        if(!isset($_SESSION["id_usuario"])){  
+            }else{
+         include_once("components/menu.php");
+         } 
+            if(!isset($_SESSION["id_usuario"])){  ?>
+            <a href="#" class="azulrey" data-toggle="modal" data-target="#myModal"><i id="iconos" class="fa fa-sign-in" aria-hidden="true"></i><h4 class="letramenu"> Iniciar Sesión</h4></a>
+       <?php }else{
+          ?>
+
+    
+          <a href="cerrarsesion.php" class="azulrey"> <i  id="iconos" class="fa fa-sign-out" aria-hidden="true"></i> <h4 class="letramenu"> Cerrar Sesión</h4></a>
+      <?php  } ?>
+           
+            
+        </div>
     </ul>
 </nav>
 

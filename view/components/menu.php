@@ -3,17 +3,18 @@
 if($_SESSION["id_rol"]==1){//Menu Administrador
 
 ?> 
-<li><a href="#"><i class="fa fa-users" aria-hidden="true"></i> Usuarios</a></li>
-<li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Productos</a></li>
-<li><a href="#"><i class="fa fa-file-o" aria-hidden="true"></i> Publicaciones</a></li>
-<li><a href="#"><i class="fa fa-truck" aria-hidden="true"></i> Pedidos</a></li>
+
+<a class="orange" href="#"><i id="iconos" class="fa fa-users" aria-hidden="true"></i><h4 class="letramenu"> Usuarios</h4></a>
+<a class="blue" href="#"><i id="iconos" class="fa fa-cubes" aria-hidden="true"></i><h4 class="letramenu"> Productos</h4></a>
+<a class="verdeagua" href="#"><i id="iconos" class="fa fa-file-o" aria-hidden="true"></i><h4 class="letramenu"> Publicaciones</h4></a>
+<a class="red" href="#"><i id="iconos" class="fa fa-truck" aria-hidden="true"></i><h4 class="letramenu"> Pedidos</h4></a>
 <?php }
 elseif ($_SESSION["id_rol"]==2) {//menu empleado
 	?>
-<li><a href="#"><i class="fa fa-cubes" aria-hidden="true"></i> Productos</a></li>
-<li><a href="#"><i class="fa fa-truck" aria-hidden="true"></i> Pedidos</a></li
+<a class="orange" href="#"><i id="iconos" class="fa fa-cubes" aria-hidden="true"></i><h4 class="letramenu"> Productos</h4></a>
+<a class="verdeagua" href="#"><i id="iconos" class="fa fa-truck" aria-hidden="true"></i><h4 class="letramenu"> Pedidos</h4></a>
 <?php }
 elseif($_SESSION["id_rol"]==2){//cliente
 	?>
-	<li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Mis compras</a></li
+	<a  class="red" href="#"><i id="iconos" class="fa fa-shopping-cart" aria-hidden="true"></i><h4 class="letramenu"> Mis compras</h4></a></li
 	<?php } ?>

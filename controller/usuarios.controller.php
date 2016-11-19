@@ -147,7 +147,7 @@
 
 						      $_SESSION["id_usuario"]     = $usuario[0];
 						      $_SESSION["nombre"]         = $usuario[1];
-						      $_SESSION["apellido"]       = $usuario[3];
+						      $_SESSION["apellido"]       = $usuario[2];
 						      $_SESSION["id_rol"]         = $usuario[14];
 						      $msn=base64_encode("Bienvenido ".$usuario[1]." ".$usuario[2]);
 						      $tipo_msn=base64_encode("success");		     
