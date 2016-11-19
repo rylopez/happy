@@ -71,8 +71,8 @@
    <ul id="mimenu" class="dropdown-menu">
       <div class="menu">
             <a class="yellow" href="#"><i id ="iconos" class="fa fa-home iconos" aria-hidden="true"></i><h4 class="letramenu"> Inicio</h4></a>
-            <a class="green" href="#"><i id ="iconos" class="fa fa-venus" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellas </h4></a>
-            <a class="pink" href="#"><i id="iconos" class="fa fa-mars" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellos</h4></a>
+            <a class="pink" href="#"><i id ="iconos" class="fa fa-venus" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellas </h4></a>
+            <a class="green" href="#"><i id="iconos" class="fa fa-mars" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellos</h4></a>
             <a class="purple" href="#"><i id="iconos" class="fa fa-transgender-alt" aria-hidden="true"></i><h4 class="letramenu"> Sexo Inteligente</h4></a>
              <?php 
            
