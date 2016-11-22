@@ -44,6 +44,24 @@
                 opacity: 0.3
                  }, 200);
               });
+  $("#btn_ajax").click(function(){
+ var url = "../controller/usuarios.controller.php"; // El script a dónde se realizará la petición.
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#form_ajax").serialize(), // Adjuntar los campos del formulario enviado.
+           success: function(data)
+           {
+               $("#e_nombre").html('');
+               $("#e_email").html('');
+               $("#e_password").html('');
+               $("#e_repetir_password").html('');
+               $("#mensaje").html(data); // Mostrar la respuestas del script PHP.
+           }
+         });
+
+    return false; // Evitar ejecutar el submit del formulario.
+ });
    });
  </script>
   
@@ -52,19 +70,7 @@
 
 <nav class="navbar navbar-inverse" >
    <a  href="#"><img src="recursos/logos/logo.png" style="width: 10%;"></a> 
-   <?php
-   if(!isset($_SESSION["id_usuario"])){  
-            }else{ ?>
-    <div>
-    <a  type="button" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <ul class="dropdown-menu dropdown-menu-right">
-      <li><a href="#">Actualizar mi perfil</a></li>
-      <li class="divider"></li>
-      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
-    </ul>
-    </div>
   
-  <?php } ?>
   <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
    
  
@@ -93,6 +99,19 @@
         </div>
     </ul>
 </nav>
+ <?php
+   if(!isset($_SESSION["id_usuario"])){  
+            }else{ ?>
+    <div>
+    <a  type="button" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a href="#">Actualizar mi perfil</a></li>
+      <li class="divider"></li>
+      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
+    </ul>
+    </div>
+  
+  <?php } ?>
 
 <div>
   <?php include_once("components/comp.pages.php") ?>
