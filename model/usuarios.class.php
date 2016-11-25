@@ -6,7 +6,7 @@
 class Gestion_usuarios{
 	//metodo crear
 	// este  metodo  guardara  en la tabla  contactos   todos  los parametros desde el  formulario.
-	function Create($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$fecha_nacimiento,$sexo,$estado,$id_rol,$autor)
+	function Create($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
 		$conexion=style_plus_BD::Connect();
@@ -16,9 +16,9 @@ class Gestion_usuarios{
 		
 		
 		//crear  el  quiery  que vamos a realizar.
-		$consulta= "INSERT INTO usuario (tipo_documento,numero_documento,clave,nombre,apellido,telefono,direccion,ciudad,correo,celular,fecha_nacimiento,sexo,estado,id_rol,fecha_creacion,autor) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$consulta= "INSERT INTO usuario (tipo_documento,numero_documento,clave,nombre,apellido,telefono,direccion,ciudad,correo,celular,edad,sexo,estado,id_rol,fecha_creacion,autor) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		$query=$conexion->prepare($consulta);
-		$query->execute(array($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$fecha_nacimiento,$sexo,$estado,$id_rol,$fecha_creacion,$autor));
+		$query->execute(array($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$fecha_creacion,$autor));
 
 		style_plus_BD::Disconnect();
 	}
@@ -41,25 +41,7 @@ class Gestion_usuarios{
 
 		style_plus_BD::Disconnect();
 	}
-	function Readbyempresa($id_empresa)
-	{
-		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
-		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		
-		//crear  el  query  que vamos a realizar.
-		$consulta="SELECT usuario.id_usuario,usuario.tipo_documento, usuario.numero_documento,usuario.nombre,usuario.apellido,usuario.correo,usuario.id_rol,usuario.estado  from usuario INNER JOIN  empleado on usuario.id_usuario=empleado.id_usuario
-                    INNER JOIN empresa on empleado.id_empresa=empresa.id_empresa WHERE empresa.id_empresa=?";
-		$query=$conexion->prepare($consulta);
-		$query->execute(array($id_empresa));
-		// devolmemos el resultado en un arreglo
-		//Fetch:Es  el  resultado que arroja la   consultta   en forma   de vector   o matris  segun sea el caso
-		//para  consultas donde arroja mas de un dato    el  fetch  debe  ir  acompañado   con la  palabra ALL
-		$resultado=$query->fetchALL(PDO::FETCH_BOTH);
-		return $resultado;
-
-		style_plus_BD::Disconnect();
-	}
+	
 function ReadbyId($id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
@@ -126,16 +108,16 @@ function ReadbyId($id_usuario)
 		style_plus_BD::Disconnect();
 		return $resultado;
 	}
-	function veref_exist($correo,$numero_documento)
+	function veref_exist($correo)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
 		$conexion=style_plus_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		
 		//crear  el  query  que vamos a realizar.
-		$consulta= "SELECT * FROM usuario WHERE correo=? OR numero_documento=?";
+		$consulta= "SELECT * FROM usuario WHERE correo=?";
 		$query=$conexion->prepare($consulta);
-		$query->execute(array($correo,$numero_documento));
+		$query->execute(array($correo));
 		// devolmemos el resultado en un arreglo
 		//Fetch:Es  el  resultado que arroja la   consultta   en forma   de vector   o matris  segun sea el caso
 		//para  consultas donde arroja mas de un dato    el  fetch  debe  ir  acompañado   con la  palabra ALL

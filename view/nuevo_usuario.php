@@ -10,14 +10,15 @@
            
         
 ?>
+ <div id="mensaje"></div>
+<div class="form-style-6">
 
-
-  <form   action="../controller/usuarios.controller.php" method="POST">
+ 
+  <form   action="<?php echo $_SERVER["PHP_SELF"] ?>" id="nuevousuario" method="POST">
         <h3 ><?php echo $titulo ?></h3>
 
-        <label class="black-text">Tipo de Documento</label>
-        <br>
-          <select name="tipo_documento" required >
+       
+          <select name="tipo_documento" placeholder="Tipo de documento" required >
             <option value="" disabled selected>Seleccione</option>
             <option value="CC">Cedula de Ciudadanía</option>
             <option value="TI">Tarjeta de Identidad</option>
@@ -25,58 +26,47 @@
             <option value="Pasaporte">Pasaporte</option>
           </select>
 
-            <label class="black-text">Número de documento</label>
-            <br>
-            <input type="number" name="numero_documento" class="validate" required  />
+          <input type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required  />
               
-            <label >Nombres</label>
-            <br>
-            <input type="text" name="nombre" class="validate" required />
-              
-            <label >Apellidos</label>
-            <br>
-            <input type="text" name="apellido" class="validate" required />
-              
-            <label >Número celular</label>
-            <br>
-            <input type="number" name="celular" class="validate" required size="11" />
+            <input type="text" placeholder="Nombres" name="nombre"  required />
+            <div id="e_nombre"></div>  
+            
+            <input type="text" name="apellido" placeholder="Apellido" required />
+             <div id="e_apellido"></div> 
+            
+            <input type="number" name="celular" placeholder="Número Celular"  required size="11" />
           
-            <label >Número de telefono</label>
-            <br>
-            <input type="number" name="telefono" class="validate" required size="10" />
+            <input type="number" name="telefono"  placeholder="Número telefofico" required size="10" />
           
-            <label >Dirección</label>
-            <br>
-            <input type="text" name="direccion" class="validate" required/ >
+            
+            <input type="text" name="direccion"  placeholder="Dirección" required/ >
          
-            <label >Ciudad</label>
-            <br>
-            <input type="text" name="ciudad" class="validate" required / >
-          <
-            <label >Correo Electrónico</label>
-            <br>
-            <input type="email" name="correo" class="validate" required/ >
-         
-            <label >Ingrese una Contraseña</label>
-            <br>
-            <input type="password" name="clave1" class="validate" required/>
-            <label >Repita Contraseña</label>
-            <br>
-            <input type="password" name="clave2" class="validate" required/>
+           
+            <input type="text" name="ciudad" placeholder="Ciudad" required / >
+            <div id="e_ciudad"></div>
+          
+            
+            <input type="email" name="correo" placeholder="Ciudad de residencia"  required/ >
+            <div id="e_correo"></div>
+            
+            <input type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
+            <div id="e_clave1"></div>
+           
+            <input type="password" name="clave2" placeholder="Repita Contraseña" required/>
+            <div id="e_clave2"></div>
           
       
-          <label >edad </label>
-            <br>
-            <input type="number" name="edad" required/ >
          
-            <label class="black-text center" >Seleccione Género</label>
-            <br>
-           
-            <input name="sexo"  value="mujer"type="radio" id="sex1" required/ />
-            <label for="sex1" class="black-text">Femenino</label>
+            <input type="number" name="edad" placeholder="Edad" required/ >
+            <div id="e_edad"></div>
+         
+            <label  >Seleccione Género</label>
+            
+            <input name="sexo"  value="mujer" type="radio" id="sex1" required/ />
+            <label for="sex1" >Femenino</label>
             
             <input name="sexo"  value="Hombre" type="radio" id="sex2" />
-            <label for="sex2" class="black-text">Masculino</label>
+            <label for="sex2" >Masculino</label>
             
         <?php
 
@@ -87,9 +77,8 @@
           
         <?php    }else{ 
           if ($_SESSION["id_rol"]==1) {?>
-          <label >Rol usuario</label>
-            <br>
-                <select    name="id_rol" required>
+        
+                <select    name="id_rol" placeholder="Rol Usuario" required>
                     <option value="" disabled selected>Seleccione el Rol</option>
                     <option value="1">Administrador</option>
                     <option value="2">Empleado</option>
@@ -97,9 +86,8 @@
                 </select>
          
         <?php }else{  ?>
-            <label >Rol usuario</label>
-            <br>
-                <select    name="id_rol" required>
+           
+                <select    name="id_rol" required placeholder="Rol Usuario">
                     <option value="" disabled selected>Seleccione el Rol</option>
                     <option value="2">Empleado</option>
                     <option value="3">Cliente</option>                    
@@ -108,23 +96,27 @@
       <?php } } ?>
       
       
-
+      <input type="hidden" name="acc" value="c">
       <input type="hidden" name="estado" value="1">
       <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
 
-          <div class="col s12 center">
 
-            <button  name="acc" value="c" class="waves-effect black btn">Guardar</button>
+
+      <button   class="btn" id="btnnuevouser">Guardar</button>
             <?php
-      if ($_SESSION["id_rol"]==4 || $_SESSION["id_rol"]==3 ) {              
+
+      if(!isset($_SESSION["id_usuario"])){
+                 
       ?>
-         <a class="waves-effect black btn" href="dashboard.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</a>
+      <a clas="btn" href="index.php">Cancelar</a>   
       <?php 
        }else {
+         if ($_SESSION["id_rol"]==1 ) {  
       ?>
-      <a class="waves-effect black btn" href="dashboard.php?p=<?php echo base64_encode(""); ?>">Cancelar</a>
+      
+      <a  clas="btn" href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</a>
       <?php 
-       }
+       }}
       ?>
             
 
@@ -132,3 +124,4 @@
 
           
   </form>
+  </div>
