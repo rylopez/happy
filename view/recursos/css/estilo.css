@@ -54,9 +54,16 @@
 .iconmenu {
   text-decoration: none !important;
   color: white;
-  margin-left: 84% !important;
+  margin-left: 4% !important;
  
   
+}
+#nomusu{
+  margin-left: 80%;
+  margin-top: 0px !important;
+}
+#logomenu{
+  margin-left:76% !important;
 }
 #menu{
   font-size: 45px;
@@ -81,13 +88,14 @@
 
 .menu {
   width: 100%;
-  margin: 30px auto;
+  margin-left: 0px !important;
+
 }
 .menu a {
-  width: 300px;
-  line-height:300px;
+  width: 245px;
+  line-height:245px;
   display: block;
-  margin: 45px;
+  margin: 10px;
   text-align: center;
   float: left;
   opacity: 0.3;
@@ -144,6 +152,7 @@
     margin: 10px auto;
     padding: 16px;
     background: #F7F7F7;
+    width: 70%;
 }
 .form-style-6 h3{
     background: #43D1AF;
@@ -200,7 +209,7 @@
 }
 
 .form-style-6 input[type="submit"],
-.form-style-6 input[type="button"]{
+.form-style-6 button{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

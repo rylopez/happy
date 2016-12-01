@@ -73,7 +73,7 @@
 <body>
 
 <nav class="navbar navbar-inverse" >
-   <a  href="#"><img src="recursos/logos/logo.png" style="width: 10%;"></a> 
+  
   
   <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
    
@@ -102,12 +102,11 @@
             
         </div>
     </ul>
-</nav>
- <?php
+     <?php
    if(!isset($_SESSION["id_usuario"])){  
             }else{ ?>
     <div>
-    <a  type="button" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <a  id="nomusu" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
     <ul class="dropdown-menu dropdown-menu-right">
       <li><a href="#">Actualizar mi perfil</a></li>
       <li class="divider"></li>
@@ -116,6 +115,9 @@
     </div>
   
   <?php } ?>
+     <a  href="#" id="logomenu"><img src="recursos/logos/logo.png" style="width: 10%;"></a> 
+</nav>
+
 
 <div>
   <?php include_once("components/comp.pages.php") ?>

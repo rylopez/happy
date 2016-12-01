@@ -18,8 +18,8 @@
         <h3 ><?php echo $titulo ?></h3>
 
        
-          <select name="tipo_documento" placeholder="Tipo de documento" required >
-            <option value="" disabled selected>Seleccione</option>
+          <select name="tipo_documento"  required >
+            <option value="" disabled selected>Seleccione tipo de documento</option>
             <option value="CC">Cedula de Ciudadanía</option>
             <option value="TI">Tarjeta de Identidad</option>
             <option value="RC">Registro Civil</option>
@@ -42,11 +42,11 @@
             <input type="text" name="direccion"  placeholder="Dirección" required/ >
          
            
-            <input type="text" name="ciudad" placeholder="Ciudad" required / >
+            <input type="text" name="ciudad" placeholder="Ciudad de residencia" required / >
             <div id="e_ciudad"></div>
           
             
-            <input type="email" name="correo" placeholder="Ciudad de residencia"  required/ >
+            <input type="email" name="correo" placeholder="Correo electronico"  required/ >
             <div id="e_correo"></div>
             
             <input type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
@@ -60,13 +60,12 @@
             <input type="number" name="edad" placeholder="Edad" required/ >
             <div id="e_edad"></div>
          
-            <label  >Seleccione Género</label>
-            
-            <input name="sexo"  value="mujer" type="radio" id="sex1" required/ />
-            <label for="sex1" >Femenino</label>
-            
-            <input name="sexo"  value="Hombre" type="radio" id="sex2" />
-            <label for="sex2" >Masculino</label>
+           <select name="sexo"required >
+            <option value="" disabled selected>Seleccione Genero</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="otro">otro</option>
+          </select>
             
         <?php
 
