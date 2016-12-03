@@ -17,7 +17,13 @@
   <form   action="<?php echo $_SERVER["PHP_SELF"] ?>" id="nuevousuario" method="POST">
         <h3 ><?php echo $titulo ?></h3>
 
-       
+          <div id="e_nombre"></div> 
+          <div id="e_apellido"></div>
+          <div id="e_ciudad"></div>
+           <div id="e_correo"></div>
+           <div id="e_clave1"></div>
+           <div id="e_clave2"></div>
+            <div id="e_edad"></div>
           <select name="tipo_documento"  required >
             <option value="" disabled selected>Seleccione tipo de documento</option>
             <option value="CC">Cedula de Ciudadanía</option>
@@ -29,10 +35,10 @@
           <input type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required  />
               
             <input type="text" placeholder="Nombres" name="nombre"  required />
-            <div id="e_nombre"></div>  
+             
             
             <input type="text" name="apellido" placeholder="Apellido" required />
-             <div id="e_apellido"></div> 
+              
             
             <input type="number" name="celular" placeholder="Número Celular"  required size="11" />
           
@@ -43,22 +49,22 @@
          
            
             <input type="text" name="ciudad" placeholder="Ciudad de residencia" required / >
-            <div id="e_ciudad"></div>
+            
           
             
             <input type="email" name="correo" placeholder="Correo electronico"  required/ >
-            <div id="e_correo"></div>
+           
             
             <input type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
-            <div id="e_clave1"></div>
+            
            
             <input type="password" name="clave2" placeholder="Repita Contraseña" required/>
-            <div id="e_clave2"></div>
+            
           
       
          
             <input type="number" name="edad" placeholder="Edad" required/ >
-            <div id="e_edad"></div>
+           
          
            <select name="sexo"required >
             <option value="" disabled selected>Seleccione Genero</option>
@@ -101,19 +107,19 @@
 
 
 
-      <button   class="btn" id="btnnuevouser">Guardar</button>
+      <button    id="btnnuevouser">Guardar</button>
             <?php
 
       if(!isset($_SESSION["id_usuario"])){
                  
       ?>
-      <a clas="btn" href="index.php">Cancelar</a>   
+      <button  href="index.php">Cancelar</button>   
       <?php 
        }else {
          if ($_SESSION["id_rol"]==1 ) {  
       ?>
       
-      <a  clas="btn" href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</a>
+      <button   href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</button>
       <?php 
        }}
       ?>
