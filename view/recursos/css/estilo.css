@@ -26,6 +26,10 @@
     }
   
   }
+  #nav{
+    width: 70%;
+    margin-top:0px !important;
+  }
   #mimodal{
     background-color: black;
   }
@@ -62,9 +66,7 @@
   margin-left: 80%;
   margin-top: 0px !important;
 }
-#logomenu{
-  margin-left:76% !important;
-}
+
 #menu{
   font-size: 45px;
   margin-top: 5px

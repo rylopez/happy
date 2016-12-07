@@ -71,13 +71,32 @@
   
 </head>
 <body>
-
 <nav class="navbar navbar-inverse" >
   
   
-  <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
+  
+    <div id="nav" class="container">
+                   
+  <ul class="nav nav-tabs " role="tablist">
+    <li class="disabled"><a href="#"><img src="recursos/logos/logo.png" style="width:60px;"></a></li>
+    <li><a href="#"></a></li>
+    <li class="dropdown">
+      <?php
+      if(!isset($_SESSION["id_usuario"])){  
+            }else{ ?>
+    
+    <a   data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a href="#">Actualizar mi perfil</a></li>
+      <li class="divider"></li>
+      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
+    </ul>
+      <?php } ?>
+     </li>
+     <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
    
  
+
    <ul id="mimenu" class="dropdown-menu">
       <div class="menu">
             <a class="yellow" href="#"><i id ="iconos" class="fa fa-home iconos" aria-hidden="true"></i><h4 class="letramenu"> Inicio</h4></a>
@@ -101,23 +120,18 @@
            
             
         </div>
-    </ul>
-     <?php
-   if(!isset($_SESSION["id_usuario"])){  
-            }else{ ?>
-    <div>
-    <a  id="nomusu" data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <ul class="dropdown-menu dropdown-menu-right">
-      <li><a href="#">Actualizar mi perfil</a></li>
-      <li class="divider"></li>
-      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
-    </ul>
-    </div>
+    </ul>          
+  </ul>
   
-  <?php } ?>
-     <a  href="#" id="logomenu"><img src="recursos/logos/logo.png" style="width: 10%;"></a> 
-</nav>
+ 
+</div>
+     
+    
+    
+  
 
+     
+</nav>
 
 <div>
   <?php include_once("components/comp.pages.php") ?>
