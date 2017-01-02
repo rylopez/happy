@@ -75,27 +75,10 @@
   
   
   
-    <div id="nav" class="container">
+<div id="nav" class="container">
                    
   <ul class="nav nav-tabs " role="tablist">
-    <li class="disabled"><a href="#"><img src="recursos/logos/logo.png" style="width:60px;"></a></li>
-    <li><a href="#"></a></li>
-    <li class="dropdown">
-      <?php
-      if(!isset($_SESSION["id_usuario"])){  
-            }else{ ?>
-    
-    <a   data-toggle="dropdown"> <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-    <ul class="dropdown-menu dropdown-menu-right">
-      <li><a href="#">Actualizar mi perfil</a></li>
-      <li class="divider"></li>
-      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
-    </ul>
-      <?php } ?>
-     </li>
-     <a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
-   
- 
+    <li><a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
 
    <ul id="mimenu" class="dropdown-menu">
       <div class="menu">
@@ -120,7 +103,25 @@
            
             
         </div>
-    </ul>          
+    </ul>
+     </li> 
+    <li><a href="#"><img src="recursos/logos/logo.png" style="width:60px;"></a></li>
+    <li class="dropdown">
+      <?php
+      if(!isset($_SESSION["id_usuario"])){  
+            }else{ ?>
+    
+    <a   data-toggle="dropdown" id="nomusu" > <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a href="#">Actualizar mi perfil</a></li>
+      <li class="divider"></li>
+      <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>      
+    </ul>
+      <?php } ?>
+     </li>
+
+ 
+          
   </ul>
   
  

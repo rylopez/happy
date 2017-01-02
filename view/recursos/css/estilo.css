@@ -27,7 +27,7 @@
   
   }
   #nav{
-    width: 70%;
+    width: 100%;
     margin-top:0px !important;
   }
   #mimodal{
@@ -58,8 +58,6 @@
 .iconmenu {
   text-decoration: none !important;
   color: white;
-  margin-left: 4% !important;
- 
   
 }
 #nomusu{
@@ -82,6 +80,8 @@
   font-family: 'Open sans', sans-serif;
   font-weight: 300;
   font-size: 20pt;
+  width: 900px !important;
+  margin-left: 0px;
 }
 .yellow,.blue,.purple,.orange,.pink,.green,.red,.verdeagua,.azulrey {
   color: #fff !important;
@@ -94,8 +94,8 @@
 
 }
 .menu a {
-  width: 245px;
-  line-height:245px;
+  width: 200px;
+  line-height:200px;
   display: block;
   margin: 10px;
   text-align: center;
@@ -112,7 +112,30 @@
 .verdeagua { background:#01DFD7; }
 .azulrey { background: #08088A; }
 
+ @media (max-width: 900px) {
+  #mimenu{
+  background: #111;
+  color: #fff;
+  font-family: 'Open sans', sans-serif;
+  font-weight: 300;
+  font-size: 20pt;
+  width: 700px !important;
+  margin-left: 0px;
+}
+
+ }
+
  @media (max-width: 700px) {
+  
+  #mimenu{
+  background: #111;
+  color: #fff;
+  font-family: 'Open sans', sans-serif;
+  font-weight: 300;
+  font-size: 20pt;
+  width: 300px !important;
+  margin-left: 0px;
+}
  .menu a {
   width: 50%;
   
@@ -127,7 +150,7 @@
 
 }
  #iconos{
-  font-size: 4em !important;
+  font-size: 2em !important;
 
 
 }
