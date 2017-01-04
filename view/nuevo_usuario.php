@@ -10,13 +10,17 @@
            
         
 ?>
- <div id="mensaje"></div>
+<div class="row contenedor">
+
+<div class="col-sm-12 col-md-7 col-lg-9 formulario">
+ 
 <div class="form-style-6">
 
  
   <form   action="<?php echo $_SERVER["PHP_SELF"] ?>" id="nuevousuario" method="POST">
         <h3 ><?php echo $titulo ?></h3>
-
+        
+          <div Id="mensaje"></div>
           <div id="e_nombre"></div> 
           <div id="e_apellido"></div>
           <div id="e_ciudad"></div>
@@ -25,7 +29,7 @@
            <div id="e_clave2"></div>
             <div id="e_edad"></div>
           <select name="tipo_documento"  required >
-            <option value="" disabled selected>Seleccione tipo de documento</option>
+            <option value="x" disabled selected>Seleccione tipo de documento</option>
             <option value="CC">Cedula de Ciudadanía</option>
             <option value="TI">Tarjeta de Identidad</option>
             <option value="RC">Registro Civil</option>
@@ -67,7 +71,7 @@
            
          
            <select name="sexo"required >
-            <option value="" disabled selected>Seleccione Genero</option>
+            <option value="x" disabled selected>Seleccione Genero</option>
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
             <option value="otro">otro</option>
@@ -84,7 +88,7 @@
           if ($_SESSION["id_rol"]==1) {?>
         
                 <select    name="id_rol" placeholder="Rol Usuario" required>
-                    <option value="" disabled selected>Seleccione el Rol</option>
+                    <option value="x" disabled selected>Seleccione el Rol</option>
                     <option value="1">Administrador</option>
                     <option value="2">Empleado</option>
                     <option value="3">Cliente</option>                    
@@ -107,19 +111,19 @@
 
 
 
-      <button    id="btnnuevouser">Guardar</button>
+      <button class="guardar"   id="btnnuevouser" type="submit">Guardar</button>
             <?php
 
       if(!isset($_SESSION["id_usuario"])){
                  
       ?>
-      <button  href="index.php">Cancelar</button>   
+      <a  class="btn cancelar" href="index.php">Cancelar</a>   
       <?php 
        }else {
          if ($_SESSION["id_rol"]==1 ) {  
       ?>
       
-      <button   href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</button>
+      <a  class=" btn cancelar" href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</a>
       <?php 
        }}
       ?>
@@ -129,4 +133,9 @@
 
           
   </form>
+  </div>
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
+  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+</div>
   </div>

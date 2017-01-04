@@ -107,29 +107,30 @@
 				case 'u':
 				# Actualizar
 				#iniciamos las variables   que se envian desde el  formulario  y las  que necesito  para  almacenar la tabla.
-			$tipo_documento   =$_POST["tipo_documento"];         
-			$numero_documento    =$_POST["numero_documento"];
-			$clave 			=$_POST["clave"];
+			$tipo_documento     	=$_POST["tipo_documento"];         
+			$numero_documento      	=$_POST["numero_documento"];
+			$clave1 			=$_POST["clave1"];
+			$clave2 			=$_POST["clave2"];
 			$nombre      	=$_POST["nombre"];
-			$nombre 		=strtoupper($nombre);
+			$nombre         =strtoupper($nombre);
 			$apellido    	=$_POST["apellido"];
-			$apellido 		=strtoupper($apellido);
+			$apellido       =strtoupper($apellido);
 			$telefono    	=$_POST["telefono"];
 			$direccion   	=$_POST["direccion"];
+			$celular        =$_POST["celular"];
 			$ciudad			=$_POST["ciudad"];
 			$ciudad         =strtoupper($ciudad);
 			$correo      	=$_POST["correo"];
 			$celular     	=$_POST["celular"];
-			$fecha_nacimiento=$_POST["fecha_nacimiento"];
+			$edad           =$_POST["edad"];
 			$sexo        	=$_POST["sexo"];
-			$sexo           =strtoupper($sexo);
+			$sexo           =strtoupper($sexo); 
 			$estado         =$_POST["estado"];			
 			$id_rol			=$_POST["id_rol"];
 			$autor			=$_POST["autor"];
-			$id_usuario =$_POST["id_usuario"];
-
+			$id_usuario     =$_POST["id_usuario"];
 			try {
-				Gestion_usuarios::update($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$fecha_nacimiento,$sexo,$estado,$id_rol,$autor,$id_usuario);
+				Gestion_usuarios::update($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario);
 				$msn= base64_encode("se ha actualizado correctamente :D");
 				$tipom=base64_encode("success");
 				
@@ -137,7 +138,7 @@
 				$msn=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
 				$tipom=base64_encode("warning");
 			}
-			header("location: ../views/dashboard.php?m=".$msn."&tm=".$tipom);
+			header("location: ../view/index.php?m=".$msn."&tm=".$tipom);
 
 
 				break;

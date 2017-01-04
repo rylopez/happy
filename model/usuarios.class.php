@@ -61,7 +61,7 @@ function ReadbyId($id_usuario)
 		style_plus_BD::Disconnect();
 	}
 	//METODO UPDATE
-	function update($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$fecha_nacimiento,$sexo,$estado,$id_rol,$autor,$id_usuario)
+	function update($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
 		$conexion=style_plus_BD::Connect();
@@ -69,9 +69,9 @@ function ReadbyId($id_usuario)
 		//CAPTURAMOS LA  FECHA DEL SISTEMA
 		$fecha_creacion=date("Y-m-d");
 		//crear  el  quiery  que vamos a realizar.
-		$consulta= "UPDATE usuario SET tipo_documento=?,numero_documento=?, clave=?,nombre=?,apellido=?,telefono=?,direccion=?,ciudad=?,correo=?,celular=?,fecha_nacimiento=?,sexo=?,estado=?,id_rol=?,autor=?,fecha_creacion=?  WHERE id_usuario=?  ";
+		$consulta= "UPDATE usuario SET tipo_documento=?,numero_documento=?, clave=?,nombre=?,apellido=?,telefono=?,direccion=?,ciudad=?,correo=?,celular=?,edad=?,sexo=?,estado=?,id_rol=?,autor=?,fecha_creacion=?  WHERE id_usuario=?  ";
 		$query=$conexion->prepare($consulta);
-		$query->execute(array($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$fecha_nacimiento,$sexo,$estado,$id_rol,$autor,$fecha_creacion,$id_usuario));
+		$query->execute(array($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$fecha_creacion,$id_usuario));
 
 		style_plus_BD::Disconnect();
 	}

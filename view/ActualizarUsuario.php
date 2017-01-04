@@ -8,177 +8,133 @@
   $usuario = Gestion_Usuarios::ReadbyId(base64_decode($_REQUEST["ui"]));
 
 ?>
+ <div class="row contenedor">
 
-  
-    <form class="col s12 center" action="../controller/usuarios.controller.php" method="POST" id="form">
-      <h3>Actualizar Usuario</h3>
-      <div class="row">
-        <div class="col s12  m4 black-text ">
-          <label class="white-text" >tipo de documento </label>
-            
-            <select name="tipo_documento">
-              <option value="CC" <?php if($usuario[1] == "CC"){ echo "selected"; } ?>>Cédula de ciudadania</option>
-              <option value="TI" <?php if($usuario[1] =="TI"){ echo "selected"; } ?>>Tarjeta de Identidad</option>
-              <option value="RC" <?php if($usuario[1] == "RC"){ echo "selected"; } ?>>Registro Civil</option>
-              <option value="Pasaporte" <?php if($usuario[1] =="Pasaporte"){ echo "selected"; } ?>>Pasaporte</option>
-            </select>
-        </div>
-        <div class="col s12 m4 black-text ">
-          <label>Número de documento</label>
-            
-            <input type="text" value="<?php echo $usuario[2] ?>" name="numero_documento" class="validate" required/ > 
-        </div>
-         <div class="col s12  m4 black-text ">
-          <label>Contraseña</label>
-          <br>
-          <input type="password" value="<?php echo $usuario[3] ?>" name="clave" class="validate" required/ >
-        </div>
-      </div>
-      
-      <div class="row">
-      <div class="col s12 m5 black-text ">
-          <label>Nombres</label>
-          
-          <input type="text" value="<?php echo $usuario[4] ?>"name="nombre" class="validate" required/ >
-        </div>
-        <div class="col s12 m5 black-text ">
-          <label>Apellidos</label>
-          
-          <input type="text"value="<?php echo $usuario[5] ?>" name="apellido" class="validate" >
-          </div>
+<div class="col-sm-12 col-md-7 col-lg-9 formulario">
+ 
+<div class="form-style-6">
+
+ 
+  <form   action="../controller/usuarios.controller.php" method="POST">
+        <h3 >Actualizar Usuario</h3>
         
-      </div>
-      <div class="row center">
-      <div class="col s12 m4 black-text ">
-          <label>Número de telefono</label>
-          
-          <input type="text" value="<?php echo $usuario[6] ?>"name="telefono" class="validate" required/ >          
-        </div>
-        <div class="col s12 m4 black-text ">
-          <label>Dirección</label>
-          
-          <input type="text" value="<?php echo $usuario[7] ?>" name="direccion" class="validate" required/ >
-        </div>
-        <div class="col s12 m4 black-text ">
-          <label>Ciudad</label>
-          
-          <input type="text" value="<?php echo $usuario[8] ?>" name="ciudad" class="validate" required/ >
-        </div>
-      </div>
-      <div class="row center">
-        <div class="col s12 m4 black-text ">
-          <label>Correo Electrónico</label>
-          
-          <input type="email" value="<?php echo $usuario[9] ?>"name="correo" class="validate" required/ >
-        </div>
-        <div class="col s12 m4 black-text ">
-          <label>Número celular</label>
-          
-          <input type="text" value="<?php echo $usuario[10] ?>"name="celular" class="validate" required/>
-        </div>
-        <div class="col s12 m4 black-text ">
-        <label>fecha de nacimiento </label>
-                   
-        <input type="date"value="<?php echo $usuario[11] ?>" name="fecha_nacimiento" min="1900-01-01" class="validate" required/ >
-        </div>
-      </div>
-     
-       
-                    
-          
+          <div Id="mensaje"></div>
+          <div id="e_nombre"></div> 
+          <div id="e_apellido"></div>
+          <div id="e_ciudad"></div>
+           <div id="e_correo"></div>
+           <div id="e_clave1"></div>
+           <div id="e_clave2"></div>
+            <div id="e_edad"></div>
+          <select name="tipo_documento"  required >
+            <option value="x" disabled selected>Seleccione tipo de documento</option>
+            <option value="CC" <?php if($usuario[3] == "CC"){ echo "selected"; } ?> >Cedula de Ciudadanía</option>
+            <option value="TI" <?php if($usuario[3] == "TI"){ echo "selected"; } ?>>Tarjeta de Identidad</option>
+            <option value="RC" <?php if($usuario[3] == "RC"){ echo "selected"; } ?> >Registro Civil</option>
+            <option value="Pasaporte" <?php if($usuario[3] == "Pasaporte"){ echo "selected"; } ?> >Pasaporte</option>
+          </select>
 
-
-      <div class="row" >
-       <div class="col s12 m4  ">
-          <label >Género</label>
-          
-          <select name="sexo">
-            <option value="mujer" <?php if($usuario[12] == "mujer" || $usuario[12] == "MUJER"){ echo "selected"; } ?>>Femenino</option>
-            <option value="hombre" <?php if($usuario[12] =="hombre" || $usuario[12] == "HOMBRE"){ echo "selected"; } ?>>Masculino</option>
-          </select> 
-        </div>
-      
-      <?php 
-       if($_SESSION["id_rol"]==4){
-       ?>
-      <div class="col s12 m6" name>
-      <label >Rol usuario</label>
-      
-          <select name="id_rol">
-            <option value="1" <?php if($usuario[14] == 1){ echo "selected"; } ?>>Usuario Publico</option>
-            <option value="2" <?php if($usuario[14] ==2){ echo "selected"; } ?>>Empleado</option>
-            <option value="3" <?php if($usuario[14] == 3){ echo "selected"; } ?>>Cliente Administrador</option>
-            <option value="4" <?php if($usuario[14] ==4){ echo "selected"; } ?>>Administrador</option>
-          </select>  
-      </div>
-      <?php
-      }elseif ($_SESSION["id_rol"]==3) {              
-      ?>
-      <div class="col s12 m6" name>
-      <label >Rol usuario</label>
-      
-                  <select name="id_rol">
-            <option value="1" <?php if($usuario[14] == 1){ echo "selected"; } ?>>Usuario Publico</option>
-            <option value="2" <?php if($usuario[14] ==2){ echo "selected"; } ?>>Empleado</option>
-            <option value="3" <?php if($usuario[14] == 3){ echo "selected"; } ?>>Cliente Administrador</option>
-            
-          </select>  
-      </div>
-      <?php
-      }elseif ($_SESSION["id_rol"]==2) {              
-      ?>
-      <div class=" col s12 m6" name>
-      <label >Rol usuario</label>
-      
-                  <select name="id_rol">
-            <option value="1" <?php if($usuario[14] == 1){ echo "selected"; } ?>>Usuario Publico</option>
-            <option value="2" <?php if($usuario[14] ==2){ echo "selected"; } ?>>Empleado</option>
-            
-            
-          </select>  
-      </div>
-      <?php
-      }elseif ($_SESSION["id_rol"]==1) {              
-      ?>
-      <div class=" col s12 m6" name>
-      <label >Rol usuario</label>
-      
-            <select name="id_rol">
-            <option value="1" <?php if($usuario[14] == 1){ echo "selected"; } ?>>Usuario Publico</option>
-             </select>
+          <input value="<?php echo $usuario[4] ?>"  type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required  />
+              
+            <input value="<?php echo $usuario[1] ?>"  type="text" placeholder="Nombres" name="nombre"  required />
              
-      </div>
-      <?php 
-       }
-      ?>
+            
+            <input value="<?php echo $usuario[2] ?>"  type="text" name="apellido" placeholder="Apellido" required />
+              
+            
+            <input value="<?php echo $usuario[8] ?>"  type="number" name="celular" placeholder="Número Celular"  required size="11" />
+          
+            <input value="<?php echo $usuario[7] ?>"  type="number" name="telefono"  placeholder="Número telefofico" required size="10" />
+          
+            
+            <input value="<?php echo $usuario[9] ?>"  type="text" name="direccion"  placeholder="Dirección" required/ >
+         
+           
+            <input value="<?php echo $usuario[10] ?>"  type="text" name="ciudad" placeholder="Ciudad de residencia" required / >
+            
+          
+            
+            <input value="<?php echo $usuario[5] ?>"  type="email" name="correo" placeholder="Correo electronico"  required/ >
+           
+            
+            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
+            
+           
+            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave2" placeholder="Repita Contraseña" required/>
+            
+          
+      
+         
+            <input value="<?php echo $usuario[11] ?>"  type="number" name="edad" placeholder="Edad" required/ >
+           
+         
+           <select name="sexo"required >
+            <option value="x" disabled selected>Seleccione Genero</option>
+            <option value="Femenino"<?php if($usuario[12] == "Femenino"){ echo "selected"; } ?> >Femenino</option>
+            <option value="Masculino" <?php if($usuario[12] == "Masculino"){ echo "selected"; } ?>>Masculino</option>
+            <option value="otro" <?php if($usuario[12] == "otro"){ echo "selected"; } ?>>otro</option>
+          </select>
+            
+        <?php
+
+
     
-      </div>
-               
-      
+        if(!isset($_SESSION["id_usuario"])){ ?>
+        <input name="id_rol" value="<?php echo $usuario[13] ?>"  type="hidden" />
+          
+        <?php    }else{ 
+          if ($_SESSION["id_rol"]==1) {?>
         
-      <div class="row center">
-        <input type="hidden" value="<?php echo $usuario[13] ?>" name="estado"  class="validate" required />
+                <select    name="id_rol" placeholder="Rol Usuario" required>
+                    <option value="x" disabled selected>Seleccione el Rol</option>
+                    <option value="1" <?php if($usuario[13] == "1"){ echo "selected"; } ?>>Administrador</option>
+                    <option value="2" <?php if($usuario[13] == "2"){ echo "selected"; } ?>>Empleado</option>
+                    <option value="3" <?php if($usuario[13] == "3"){ echo "selected"; } ?>>Cliente</option>                    
+                </select>
+         
+        <?php }else{  ?>
+           
+                <select    name="id_rol" required placeholder="Rol Usuario">
+                    <option value="" disabled selected>Seleccione el Rol</option>
+                    <option value="2" <?php if($usuario[13] == "2"){ echo "selected"; } ?>>Empleado</option>
+                    <option value="3" <?php if($usuario[13] == "3"){ echo "selected"; } ?>>Cliente</option>                    
+                </select>
+            
+      <?php } } ?>
       
-         <input type="hidden" name="id_usuario" value="<?php echo $usuario[0] ?>">  
-         <input type="hidden" name="autor" value="Autoregistrado">               
-         <button  type="botton" name="acc" value="u" class="waves-effect black btn">Guardar</button>
-      <?php
-      if ($_SESSION["id_rol"]==4 || $_SESSION["id_rol"]==3 ) {              
+      
+      
+      <input type="hidden" name="estado" value="1">
+      <input type="hidden" name="id_usuario" value="<?php echo $usuario[0] ?>" >
+      <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
+
+
+
+      <button class="guardar"   type="botton" name="acc" value="u">Guardar</button>
+            <?php
+
+      if(!isset($_SESSION["id_usuario"])){
+                 
       ?>
-         <a class="waves-effect black btn" href="dashboard.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</a>
+      <button type="botton" class="cancelar" href="index.php">Cancelar</button>   
       <?php 
        }else {
+         if ($_SESSION["id_rol"]==1 ) {  
       ?>
-      <a class="waves-effect black btn" href="dashboard.php?p=<?php echo base64_encode(""); ?>">Cancelar</a>
+      
+      <button   type="botton" class="cancelar" href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</button >
       <?php 
-       }
+       }}
       ?>
+            
 
-       
-      </div>
-    </form>
- 
+     
 
- 
-  
-  
+          
+  </form>
+  </div>
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
+  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+</div>
+  </div>

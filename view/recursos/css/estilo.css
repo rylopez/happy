@@ -177,11 +177,12 @@
 }
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
-     margin: 10px auto;
+     margin-left: 2%;
       margin-right: 2%;
+
     padding: 16px;
     background: #F7F7F7;
-    width: 70%;
+    width: 95%;
 }
 .form-style-6 h3{
     background: #43D1AF;
@@ -238,11 +239,11 @@
 }
 
 .form-style-6 input[type="submit"],
-.form-style-6 button{
+.guardar{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    width: 100%;
+    width: 48%;
     padding: 3%;
     background: #43D1AF;
     border-bottom: 2px solid #30C29E;
@@ -251,7 +252,39 @@
     border-left-style: none;    
     color: #fff;
 }
+.cancelar{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 48%;
+    padding: 3%;
+    background:#797D8B;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+}
 .form-style-6 input[type="submit"]:hover,
-.form-style-6 button:hover{
+.guardar:hover{
     background: #2EBC99 !important;
+}
+.cancelar:hover{
+    background: #5C6171 !important;
+}
+.menurapido{
+  
+   background: #F7F7F7;
+  
+  
+}
+.formulario{
+   background: #F7F7F7;
+}
+.contenedor {
+  width: 98%;
+  background:;
+  margin-top:-10px;
+  margin-right:-50px !important;
+
 }
