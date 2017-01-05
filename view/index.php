@@ -59,6 +59,14 @@
 
     return false; // Evitar ejecutar el submit del formulario.
  });
+  $("#tipoproducto").change(function () {
+           $("#tipoproducto option:selected").each(function () {
+            elegido=$(this).val();
+            $.post("tipoproducto.php", { elegido: elegido }, function(data){
+            $("#talla").html(data);
+            });            
+        });
+   })
    <?php
 
                     if(isset($_GET["m"],$_GET["tm"])){

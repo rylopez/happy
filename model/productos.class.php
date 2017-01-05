@@ -18,7 +18,7 @@ class Gestion_Productos{
         style_plus_BD::Disconnect();
     }
 
-	function create($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$autor){
+	function create($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor){
 	 $conexion=style_plus_BD::Connect();
      $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         //CAPTURAMOS LA  FECHA DEL SISTEMA
@@ -26,31 +26,16 @@ class Gestion_Productos{
         
         
         //crear  el  quiery  que vamos a realizar.
-        $consulta= "INSERT INTO productos (referencia,nombre,valor_compra,valor_venta,iva,descuento,estado,cant_existente,id_tipoproducto,id_proveedor,id_empresa,fecha_creacion,autor) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $consulta= "INSERT INTO producto (referencia,nombre,valor_compra,valor_venta,descuento,iva,descripcion,url_foto1,url_foto2,url_foto3,id_tipoproducto,cantidad,sexo,talla,autor,fecha_creacion) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query=$conexion->prepare($consulta);
-        $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$fecha_creacion,$autor));
+        $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor,$fecha_creacion));
 
         style_plus_BD::Disconnect();
     }
 
 
 
-	function Readbyempresa($id_empresa)
-    {
-        //instacioamos y nos conectamos a la  base de  datos
-        $conexion=style_plus_BD::Connect();
-        $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        
-        //crear  el  query  que vamos a realizar.
-        $consulta= "SELECT * FROM productos WHERE id_empresa=? ";
-        $query=$conexion->prepare($consulta);
-        $query->execute(array($id_empresa));
-        
-        $resultado=$query->fetchALL(PDO::FETCH_BOTH);
-        return $resultado;
-
-        style_plus_BD::Disconnect();
-    }
+	
     function Readbyid($id_productos)
     {
         //instacioamos y nos conectamos a la  base de  datos
@@ -105,6 +90,24 @@ class Gestion_Productos{
        
         style_plus::Disconnect();
 
+    }
+    function ReadAll()
+    {
+        //instacioamos y nos conectamos a la  base de  datos
+        $conexion=style_plus_BD::Connect();
+        $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        
+        //crear  el  query  que vamos a realizar.
+        $consulta= "SELECT * FROM producto ORDER BY nombre";
+        $query=$conexion->prepare($consulta);
+        $query->execute();
+        // devolmemos el resultado en un arreglo
+        //Fetch:Es  el  resultado que arroja la   consultta   en forma   de vector   o matris  segun sea el caso
+        //para  consultas donde arroja mas de un dato    el  fetch  debe  ir  acompañado   con la  palabra ALL
+        $resultado=$query->fetchALL(PDO::FETCH_BOTH);
+        return $resultado;
+
+        style_plus_BD::Disconnect();
     }
 
 
