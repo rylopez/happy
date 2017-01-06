@@ -45,7 +45,7 @@
 
 		        if($row["id_tipoproducto"] == 1){
 
-		          $tipoProducto = "Salud Sexual";        
+		          $tipoproducto = "Salud Sexual";        
 
 		        }elseif($row["id_tipoproducto"] == 2){
 		          $tipoproducto = "Lenceria";
@@ -64,13 +64,14 @@
 		                <td>".$row["referencia"]."</td>
 		                <td>".$row["nombre"]."</td>
 		                <td>".$row["valor_compra"]."</td>
-		                <td>".$row["Valor_venta"]."</td>
-		                <td>".$row["Descuento"]."</td>
+		                <td>".$row["valor_venta"]."</td>
+		                <td>".$row["descuento"]."</td>
 		                <td>".$row["iva"]."</td>
-		                <td>$tipoproducto</td>
+		                <td>".$tipoproducto."</td>
 		                
 
 		                <td><a href='index.php?p=".base64_encode('actualizar_producto')."&ui=".base64_encode($row['id_producto'])."'><i class='fa fa-pencil'style='color:black !important'></i></a>
+		                <a href='index.php?p=".base64_encode('actualizar_foto_producto')."&ui=".base64_encode($row['id_producto'])."'><i class='fa fa-pencil-square-o' aria-hidden='true' style='color:gray !important' ></i></a>
 		                  <a href='../controller/productos.controller.php?ui=".base64_encode($row["id_producto"])."&acc=d'><i class='fa fa-ban' style='color:red !important' aria-hidden='true'></i></a></td>
 		              </tr>";
 		            

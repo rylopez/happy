@@ -1,6 +1,6 @@
 <?php
 
-	class style_plus_BD{
+	class happy_BD{
 
 		private static $db_host="localhost";
 		private static $db_name="happy";

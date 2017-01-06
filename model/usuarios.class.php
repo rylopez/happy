@@ -9,7 +9,7 @@ class Gestion_usuarios{
 	function Create($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		//CAPTURAMOS LA  FECHA DEL SISTEMA
 		$fecha_creacion=date("Y-m-d");
@@ -20,13 +20,13 @@ class Gestion_usuarios{
 		$query=$conexion->prepare($consulta);
 		$query->execute(array($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$fecha_creacion,$autor));
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 	}
 	//Metodo  consultar  todos
 	function ReadAll()
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		
 		//crear  el  query  que vamos a realizar.
@@ -39,13 +39,13 @@ class Gestion_usuarios{
 		$resultado=$query->fetchALL(PDO::FETCH_BOTH);
 		return $resultado;
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 	}
 	
 function ReadbyId($id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		
 		//crear  el  query  que vamos a realizar.
@@ -58,13 +58,13 @@ function ReadbyId($id_usuario)
 		$resultado=$query->fetch(PDO::FETCH_BOTH);
 		return $resultado;
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 	}
 	//METODO UPDATE
 	function update($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		//CAPTURAMOS LA  FECHA DEL SISTEMA
 		$fecha_creacion=date("Y-m-d");
@@ -73,12 +73,12 @@ function ReadbyId($id_usuario)
 		$query=$conexion->prepare($consulta);
 		$query->execute(array($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$fecha_creacion,$id_usuario));
 
-		style_plus_BD::Disconnect();
+	happy_BD::Disconnect();
 	}
  	function desactivar($id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		//CAPTURAMOS LA  FECHA DEL SISTEMA
 		//crear  el  quiery  que vamos a realizar.
@@ -87,12 +87,12 @@ function ReadbyId($id_usuario)
 		$query=$conexion->prepare($consulta);
 		$query->execute(array($estado,$id_usuario));
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 	}
 	function loguear($correo,$clave)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		
 		//crear  el  query  que vamos a realizar.
@@ -105,13 +105,13 @@ function ReadbyId($id_usuario)
 		$resultado=$query->fetch(PDO::FETCH_BOTH);
 		
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 		return $resultado;
 	}
 	function veref_exist($correo)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
+		$conexion=happy_BD::Connect();
 		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		
 		//crear  el  query  que vamos a realizar.
@@ -124,26 +124,9 @@ function ReadbyId($id_usuario)
 		$resultado=$query->fetch(PDO::FETCH_BOTH);
 		return $resultado;
 
-		style_plus_BD::Disconnect();
+		happy_BD::Disconnect();
 	}
-	function cons_empresa($id_usuario)
-	{
-		//instacioamos y nos conectamos a la  base de  datos
-		$conexion=style_plus_BD::Connect();
-		$conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		
-		//crear  el  query  que vamos a realizar.
-		$consulta= "SELECT empleado.id_empresa as id_empresa,empresa.razon_social as nombre_empresa from empleado INNER JOIN empresa on empleado.id_empresa=empresa.id_empresa WHERE id_usuario=?";
-		$query=$conexion->prepare($consulta);
-		$query->execute(array($id_usuario));
-		// devolmemos el resultado en un arreglo
-		//Fetch:Es  el  resultado que arroja la   consultta   en forma   de vector   o matris  segun sea el caso
-		//para  consultas donde arroja mas de un dato    el  fetch  debe  ir  acompañado   con la  palabra ALL
-		$resultado=$query->fetch(PDO::FETCH_BOTH);
-		return $resultado;
-
-		style_plus_BD::Disconnect();
-	}
+	
 
 }
 ?>

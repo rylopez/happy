@@ -4,7 +4,7 @@ class Gestion_Productos{
    function veref_exist($referencia,$id_empresa)
     {
         //instacioamos y nos conectamos a la  base de  datos
-        $conexion=style_plus_BD::Connect();
+        $conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
         //crear  el  query  que vamos a realizar.
@@ -15,12 +15,12 @@ class Gestion_Productos{
         $resultado=$query->fetch(PDO::FETCH_BOTH);
         return $resultado;
 
-        style_plus_BD::Disconnect();
+        happy_BD::Disconnect();
     }
-
-	function create($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor){
-	 $conexion=style_plus_BD::Connect();
-     $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    function Create($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor){
+        //instacioamos y nos conectamos a la  base de  datos
+        $conexion=happy_BD::Connect();
+        $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         //CAPTURAMOS LA  FECHA DEL SISTEMA
         $fecha_creacion=date("Y-m-d");
         
@@ -30,7 +30,9 @@ class Gestion_Productos{
         $query=$conexion->prepare($consulta);
         $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor,$fecha_creacion));
 
-        style_plus_BD::Disconnect();
+
+	
+        happy_BD::Disconnect();
     }
 
 
@@ -39,7 +41,7 @@ class Gestion_Productos{
     function Readbyid($id_productos)
     {
         //instacioamos y nos conectamos a la  base de  datos
-        $conexion=style_plus_BD::Connect();
+        $conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
         //crear  el  query  que vamos a realizar.
@@ -50,24 +52,25 @@ class Gestion_Productos{
         $resultado=$query->fetch(PDO::FETCH_BOTH);
         return $resultado;
 
-        style_plus_BD::Disconnect();
+        happy_BD::Disconnect();
     }
 
 
 
  	function ReadReference($referencia){
- 		$conexion=style_plus_BD::Connect();
+ 		$conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
  		$consulta= "DELETE FROM contactos WHERE id=?";
 
  		$query =$conexion-> prepare($consulta);
         $query->$execute(array($id));
+        happy_BD::Disconnect();
     }
 
 
     function Update($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$autor,$id_productos){
-    	$conexion=style_plus_BD::Connect();
+    	$conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $fecha_creacion=date("Y-m-d");
 
@@ -75,12 +78,12 @@ class Gestion_Productos{
         $query=$conexion->prepare($consulta);
         $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$fecha_creacion,$autor,$id_productos));
 
-        style_plus_BD::Disconnect();
+        happy_BD::Disconnect();
     }
 
 
     function delete($id){
-    	$conexion = style_plus:: connect();
+    	$conexion = happy_BD:: connect();
     	$conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
     	$consulta= "DELETE FROM contacto WHERE id= ?";
@@ -88,13 +91,13 @@ class Gestion_Productos{
     	$query =$conexion-> prepare($consulta);
         $query->$execute(array($id));
        
-        style_plus::Disconnect();
+        happy_BD::Disconnect();
 
     }
     function ReadAll()
     {
         //instacioamos y nos conectamos a la  base de  datos
-        $conexion=style_plus_BD::Connect();
+        $conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
         //crear  el  query  que vamos a realizar.
@@ -107,7 +110,7 @@ class Gestion_Productos{
         $resultado=$query->fetchALL(PDO::FETCH_BOTH);
         return $resultado;
 
-        style_plus_BD::Disconnect();
+        happy_BD::Disconnect();
     }
 
 

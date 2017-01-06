@@ -83,14 +83,40 @@
 	     $msn= base64_encode("lo sentimos esta referencia ya se encuentra repetida :(");
 	     header("location: ../view/index.php?p=".base64_encode('nuevo_producto')."&m=".$msn."&tm=".$tipomsn); 
             
-         } else { 
+         } else {
+         if ($_FILES['foto1']['type'] =="image/jpg" ) {
+          	 $formato1=".jpg";
+          } elseif (($_FILES['foto1']['type'] =="image/jpeg" )) {
+          	$formato1=".jpeg";
+          }else{
+          	$formato1=".png";
+          }
+          if ($_FILES['foto2']['type'] =="image/jpg" ) {
+          	 $formato2=".jpg";
+          } elseif (($_FILES['foto2']['type'] =="image/jpeg" )) {
+          	$formato2=".jpeg";
+          }else{
+          	$formato2=".png";
+          }
+          if ($_FILES['foto3']['type'] =="image/jpg" ) {
+          	 $formato3=".jpg";
+          } elseif (($_FILES['foto3']['type'] =="image/jpeg" )) {
+          	$formato3=".jpeg";
+          }else{
+          	$formato3=".png";
+          }
+
+         $url_foto1="../view/recursos/productos/" .$referencia."_foto1".$formato1;
+		 $url_foto2="../view/recursos/productos/" .$referencia."_foto2".$formato2;
+		 $url_foto3="../view/recursos/productos/" .$referencia."_foto3".$formato3;
+
  
           $resultado1=@move_uploaded_file($_FILES["foto1"]["tmp_name"], 
-          "../view/recursos/productos/" .$referencia."_foto1");
+          $url_foto1);
           $resultado2=@move_uploaded_file($_FILES["foto2"]["tmp_name"], 
-          "../view/recursos/productos/" .$referencia."_foto2");
+          $url_foto2);
           $resultado3=@move_uploaded_file($_FILES["foto3"]["tmp_name"], 
-          "../view/recursos/productos/" .$referencia."_foto3");
+          $url_foto3);
 		
 		//comprobamos si este archivo existe para no volverlo a copiar.
 		//pero si quieren pueden obviar esto si no es necesario.
@@ -98,10 +124,17 @@
 		//aqui movemos el archivo desde la ruta temporal a nuestra ruta
 			//usamos la variable $resultado para almacenar el resultado del proceso de mover el archivo
 			//almacenara true o false
-		   $url_foto1="view/recursos/productos/" .$referencia."_foto1";
-		 $url_foto2="view/recursos/productos/" .$referencia."_foto2";
-		  $url_foto3="view/recursos/productos/" .$referencia."_foto3";
-			
+		   
+		  try {
+	Gestion_productos::create($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor);
+				$tipomsn = base64_encode("success"); 
+				$msn= base64_encode("El producto se creo exitosamente :D");
+				
+				
+			} catch (Exception $e) {
+				$mensaje=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
+			}
+			header("location: ../view/index.php?p=".base64_encode('gestion_productos')."&m=".$msn."&tm=".$tipomsn);
 		
 		
 		}
@@ -112,16 +145,8 @@
 		
 	}
 }
-try {
-	Gestion_productos::create($referencia,$nombre,$valor_compra,$valor_venta,$descuento,$iva,$descripcion,$url_foto1,$url_foto2,$url_foto3,$id_tipoproducto,$cantidad,$sexo,$talla,$autor);
-				$tipomsn = base64_encode("success"); 
-				$msn= base64_encode("su registro se actualizo correctamente :D");
-				
-				
-			} catch (Exception $e) {
-				$mensaje=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
-			}
-			header("location: ../view/index.php?p=".base64_encode('gestion_productos')."&m=".$msn."&tm=".$tipomsn);
+
+
 
 
 
