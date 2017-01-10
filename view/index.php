@@ -74,6 +74,7 @@
 
                   }
       ?>
+     $('[data-toggle="tooltip"]').tooltip(); 
    });
  </script>
   

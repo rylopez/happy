@@ -45,7 +45,7 @@ class Gestion_Productos{
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
         //crear  el  query  que vamos a realizar.
-        $consulta= "SELECT * FROM productos WHERE id_productos=? ";
+        $consulta= "SELECT * FROM producto WHERE id_productos=? ";
         $query=$conexion->prepare($consulta);
         $query->execute(array($id_productos));
         

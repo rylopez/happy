@@ -1,166 +1,187 @@
- <?php 
-  // David al pasar el estilo descomenta lo de abajo de sesion star  y  quita  los valores q hay despues del echo. graciasS
-  require_once("../model/db_conn.php");
+ <?php
+  
 
-  require_once("../model/proveedores.class.php");
+  require_once("../model/db_conn.php");
   require_once("../model/productos.class.php");
 
  
-  $proveedor=Gestion_proveedores::ReadAll();
-  $producto = Gestion_productos::Readbyid(base64_decode($_REQUEST["ui"]));
+  $producto=Gestion_Productos::ReadbyId(base64_decode($_REQUEST["ui"]));
+
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="recursos/plugins/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="recursos/css/estilos.css">
-  <link rel="stylesheet" type="text/css" href="recursos/css/jquery.dataTables.css">
-  <link rel="stylesheet" href="recursos/plugins/font-awesome/css/font-awesome.min.css">
-  <link type="text/css" rel="stylesheet" href="recursos/plugins/materialize/css/materialize.css">
-  <link rel="stylesheet" type="text/css" href="recursos/plugins/sweetalert/dist/sweetalert.css">
-  <title>Style+</title>
-  
-    
-    
-    <script type="text/javascript" src="recursos/plugins/jquery/jquery-1.12.1.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="recursos/plugins/datatable/jquery.dataTables.min.js"></script>
+ <div class="row contenedor">
 
-   
+<div class="col-sm-12 col-md-7 col-lg-9 formulario">
+ 
+<div class="form-style-6">
 
-    <script type="text/javascript" src="recursos/plugins/materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="recursos/plugins/sweetalert/dist/sweetalert.min.js"></script>
+ 
+  <form   action="../controller/productos.controller.php" method="POST">
+        <h3 >Actualizar Producto</h3>
+        
+          <input  type="text" placeholder="Referencia" name="referencia"  required data-toggle="tooltip" title="Referencia" value="<?php echo $producto[1] ?>" />
+              
+            <input  type="text" placeholder="Nombre" name="nombre"  required />             
+            
+            <input   type="number" name="valor_compra" placeholder="Valor Compra" required />
 
-     <script>
-    $(document).ready( function () {
-          $('#datatable').DataTable({    
-               "language": {               
-               "url": "https://cdn.datatables.net/plug-ins/1.10.11/i18n/Spanish.json"       
-                }   
-    })
-          $('.modal-trigger').leanModal();
-      $('select').material_select();
+            <input   type="number" name="valor_venta" placeholder="Valor Venta" required />
 
+            <input   type="number" name="descuento" placeholder="Descuento" required />
+
+            <input   type="number" name="iva" placeholder="Iva" required />
+
+            <input   type="number" name="cantidad" placeholder="Cantidad Existentes" required />
+
+            <input   type="file" name="foto1" placeholder="Foto 1 producto" required />
+
+            <input   type="file" name="foto2" placeholder="Foto 2 producto" required />
+
+            <input   type="file" name="foto3" placeholder="Foto 3 producto" required />
+
+            <select    name="sexo"  required>
+                    <option value="" disabled selected>Publico Objectivo</option>
+                    <option value="hombre">Hombres</option>
+                    <option value="mujer" >Mujeres</option>
+                    <option value="indiferente" >Indiferente</option>
+                                        
+                </select>
+
+             
+
+            <select    name="id_tipoproducto" id="tipoproducto" required>
+                    <option value="" disabled selected>Seleccione tipo producto</option>
+                    <option value="1">Salud Sexual</option>
+                    <option value="2" >Lenceria</option>
+                    <option value="3" >Juguetes</option>
+                    <option value="4" >Estimulantes</option>
+                    <option value="5" >Otros</option>                    
+                </select>
+            <div id="talla"></div>
+             <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
+            <textarea name="descripcion" placeholder="Descripcion Producto" COLS=100 ROWS=30 ></textarea>       
+
+
+
+      <button class="guardar"   type="botton" name="acc" value="c">Guardar</button>
+      <button type="botton" class="cancelar" href="index.php">Cancelar</button> 
+            
+  </form>
+  </div>
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
+  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+</div>
+  </div>
+
+          <select name="tipo_documento"  required >
+            <option value="x" disabled selected>Seleccione tipo de documento</option>
+            <option value="CC" <?php if($usuario[3] == "CC"){ echo "selected"; } ?> >Cedula de Ciudadanía</option>
+            <option value="TI" <?php if($usuario[3] == "TI"){ echo "selected"; } ?>>Tarjeta de Identidad</option>
+            <option value="RC" <?php if($usuario[3] == "RC"){ echo "selected"; } ?> >Registro Civil</option>
+            <option value="Pasaporte" <?php if($usuario[3] == "Pasaporte"){ echo "selected"; } ?> >Pasaporte</option>
+          </select>
+
+          <input value="<?php echo $usuario[4] ?>"  type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required  />
+              
+            <input value="<?php echo $usuario[1] ?>"  type="text" placeholder="Nombres" name="nombre"  required />
+             
+            
+            <input value="<?php echo $usuario[2] ?>"  type="text" name="apellido" placeholder="Apellido" required />
+              
+            
+            <input value="<?php echo $usuario[8] ?>"  type="number" name="celular" placeholder="Número Celular"  required size="11" />
+          
+            <input value="<?php echo $usuario[7] ?>"  type="number" name="telefono"  placeholder="Número telefofico" required size="10" />
+          
+            
+            <input value="<?php echo $usuario[9] ?>"  type="text" name="direccion"  placeholder="Dirección" required/ >
+         
+           
+            <input value="<?php echo $usuario[10] ?>"  type="text" name="ciudad" placeholder="Ciudad de residencia" required / >
+            
+          
+            
+            <input value="<?php echo $usuario[5] ?>"  type="email" name="correo" placeholder="Correo electronico"  required/ >
+           
+            
+            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
+            
+           
+            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave2" placeholder="Repita Contraseña" required/>
+            
+          
+      
+         
+            <input value="<?php echo $usuario[11] ?>"  type="number" name="edad" placeholder="Edad" required/ >
+           
+         
+           <select name="sexo"required >
+            <option value="x" disabled selected>Seleccione Genero</option>
+            <option value="Femenino"<?php if($usuario[12] == "Femenino"){ echo "selected"; } ?> >Femenino</option>
+            <option value="Masculino" <?php if($usuario[12] == "Masculino"){ echo "selected"; } ?>>Masculino</option>
+            <option value="otro" <?php if($usuario[12] == "otro"){ echo "selected"; } ?>>otro</option>
+          </select>
+            
         <?php
 
-          if(isset($_GET["m"])){
-            if($_GET["m"] != ""){
-              echo "alert('".$_GET["m"]."');";
-            }
-          }
 
-      ?>
-
-  
-      //$("#mySelect").change(function(){
-         //if($("#mySelect").val() == "3"){
-            //$("#complemento").html("<div class='row'><div class='input-field col s12 m6 black-text'><?php $empresa//=Gestion_empresa::ReadAll(); ?><label class='white-text' >Seleccione una empresa</label><select name='id_empresa'><?php
-                //foreach ($empresa as $emp){
-                             // echo '
-                             // <option value="'.$emp[0].'"><'.$emp[1].' </option> ';} ?>")};
-                    //});
-               
-                  });
-    </script>
     
-</head> 
-<body>
+        if(!isset($_SESSION["id_usuario"])){ ?>
+        <input name="id_rol" value="<?php echo $usuario[13] ?>"  type="hidden" />
+          
+        <?php    }else{ 
+          if ($_SESSION["id_rol"]==1) {?>
+        
+                <select    name="id_rol" placeholder="Rol Usuario" required>
+                    <option value="x" disabled selected>Seleccione el Rol</option>
+                    <option value="1" <?php if($usuario[13] == "1"){ echo "selected"; } ?>>Administrador</option>
+                    <option value="2" <?php if($usuario[13] == "2"){ echo "selected"; } ?>>Empleado</option>
+                    <option value="3" <?php if($usuario[13] == "3"){ echo "selected"; } ?>>Cliente</option>                    
+                </select>
+         
+        <?php }else{  ?>
+           
+                <select    name="id_rol" required placeholder="Rol Usuario">
+                    <option value="" disabled selected>Seleccione el Rol</option>
+                    <option value="2" <?php if($usuario[13] == "2"){ echo "selected"; } ?>>Empleado</option>
+                    <option value="3" <?php if($usuario[13] == "3"){ echo "selected"; } ?>>Cliente</option>                    
+                </select>
+            
+      <?php } } ?>
+      
+      
+      
+      <input type="hidden" name="estado" value="1">
+      <input type="hidden" name="id_usuario" value="<?php echo $usuario[0] ?>" >
+      <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
 
- <div class="container s12 m10 l9" id="form">
 
-    <form id="registrate" class="col s12 " action="../controller/productos.controller.php" method="POST">
-        <h2 class="center">Actualizar Producto</h2>
 
-        <div class="row" >
-          <div class="col s12">
-                <div class="input-field col s12 m6 black-text" >
-                <label class="black-text">Referencia</label>
-                <br>
-                <input type="text" name="referencia" value="<?php echo $producto[1] ?>" class="validate" required />
-              </div>
-                <div class="input-field col s12 m6 black-text ">
-                  <label class="black-text">Nombre Producto</label>
-                  <br>
-                  <input type="text" name="nombre"  value="<?php echo $producto[2] ?>" class="validate" required onkeypress="return validar(event)"  />
-              </div>
-        </div> 
-        </div>
-          <div class="row" >
-          <div class="col s12">
-              <div class="input-field col s12 m6 black-text" >
-                <label class="black-text">Valor Compra</label>
-                <br>
-                <input type="number" name="valor_compra" value="<?php echo $producto[3] ?>" class="validate" required />
-              </div>
-              <div class="input-field col s12 m6 black-text">
-                <label class="black-text">Valor Venta</label>
-                <br>
-                <input type="number" name="valor_venta" value="<?php echo $producto[4] ?>" class="validate" required />
-              </div>
-            </div>
-          </div>
-      <div class="row" >
-          <div class="input-field col s12 m6 black-text" >
-            <label class="black-text">Valor Iva</label>
-            <br>
-            <input type="number" name="iva" value="<?php echo $producto[5] ?>" class="validate" required size="11" />
-          </div> 
+      <button class="guardar"   type="botton" name="acc" value="u">Guardar</button>
+            <?php
 
-          <div class="input-field col s12 m6 black-text">
-            <label class="black-text">Porcentaje Descuento</label>
-            <br>
-            <input type="number" name="descuento" value="<?php echo $producto[6] ?>" class="validate"  size="10" />
-          </div>
-      </div>
-      <div class="row" >
-        <div class="col s12">
-          <div class="input-field col s12 m6 black-text">
-            <label class="black-text">Cantidad Existencias</label>
-            <br>
-            <input type="number" name="cant_existente"  value="<?php echo $producto[8] ?>" class="validate" required/ >
-          </div>
+      if(!isset($_SESSION["id_usuario"])){
+                 
+      ?>
+      <button type="botton" class="cancelar" href="index.php">Cancelar</button>   
+      <?php 
+       }else {
+         if ($_SESSION["id_rol"]==1 ) {  
+      ?>
+      
+      <button   type="botton" class="cancelar" href="index.php?p=<?php echo base64_encode("gestion_usuarios"); ?>">Cancelar</button >
+      <?php 
+       }}
+      ?>
+            
 
-          <div class="input-field col s12 m6 black-text">
-            <label class="black-text">Tipo de Productos</label>
-              <br>
-              <select name="id_tipoproducto" required >
-                <option value="" disabled selected>Seleccione</option>
-                <option value="1" <?php if($producto[9] == 1){ echo "selected"; } ?> >Insumos</option>
-                <option value="2" <?php if($producto[9] == 2){ echo "selected"; } ?>>Cosmeticos</option>
-                <option value="3" <?php if($producto[9] == 3){ echo "selected"; } ?>>Quimicos</option>
-              </select>          
-          </div>
-        </div>
-      </div>
-      <div class="row" >
-        <div class="col s12">
-          <div class="input-field col s12 m6 black-text">
-            <label class="black-text">Seleccione Proveedor</label>
-              <br>
-              <select name="id_proveedor" required >
-                <option value="" disabled selected>Seleccione</option>
-                <?php 
-              $prov=Gestion_proveedores::ReadbyId($producto[10]);
+     
 
-              echo '<option value="'.$prov["id_proveedor"].'" selected >'.$prov["razon_social"].'</option>';
-                foreach ($proveedor as $row) {
-        echo '<option value="'.$row["id_proveedor"].'">'.$row["razon_social"].'</option>';} ?>          
-               </select> 
-          </div>
-        </div>
-
-        <input type="hidden" name="id_productos" value="<?php echo $producto[0] ?>">
-        <input type="hidden" name="estado" value="1">
-        <input type="hidden" name="id_empresa" value="<?php echo 1//$_SESSION["id_empresa"]?>">
-        <input type="hidden" name="autor" value="<?php echo "yohanny Lopez" //$_SESSION["nombre"]." ".$_SESSION["apellido"]; ?>">
-          <div class="col s12 center">
-            <button  name="acc" value="u" class="waves-effect black btn">Enviar</button>
-            <button class="waves-effect black btn"><a href="index.php">Cancelar</a></button>
-          </div>
-      </div>
-
-  </form> 
+          
+  </form>
   </div>
-  </body>
-  </html>
-  
+  </div>
+  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
+  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+</div>
+  </div>

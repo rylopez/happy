@@ -28,7 +28,7 @@
            <div id="e_clave1"></div>
            <div id="e_clave2"></div>
             <div id="e_edad"></div>
-          <select name="tipo_documento"  required >
+          <select name="tipo_documento"  required data-toggle="tooltip" title="Tipo De Documento" >
             <option value="x" disabled selected>Seleccione tipo de documento</option>
             <option value="CC">Cedula de Ciudadanía</option>
             <option value="TI">Tarjeta de Identidad</option>
@@ -36,7 +36,7 @@
             <option value="Pasaporte">Pasaporte</option>
           </select>
 
-          <input type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required  />
+          <input type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required data-toggle="tooltip" title="Numero de Documento" />
               
             <input type="text" placeholder="Nombres" name="nombre"  required />
              
