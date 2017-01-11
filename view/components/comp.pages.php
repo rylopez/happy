@@ -38,7 +38,7 @@ switch ($page) {
 
 	case  'actualizar_producto':
 
-	 require_once("actualizar_producto.php");
+	 require_once("ActualizarProducto.php");
 	break;
 
 

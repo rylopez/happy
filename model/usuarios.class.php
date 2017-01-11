@@ -61,7 +61,7 @@ function ReadbyId($id_usuario)
 		happy_BD::Disconnect();
 	}
 	//METODO UPDATE
-	function update($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario)
+	function update($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario)
 	{
 		//instacioamos y nos conectamos a la  base de  datos
 		$conexion=happy_BD::Connect();

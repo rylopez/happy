@@ -57,10 +57,10 @@
             <input value="<?php echo $usuario[5] ?>"  type="email" name="correo" placeholder="Correo electronico"  required/ >
            
             
-            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
+            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave"  placeholder="Ingrese Contraseña" required/>
             
            
-            <input value="<?php echo $usuario[6] ?>"  type="password" name="clave2" placeholder="Repita Contraseña" required/>
+           
             
           
       
@@ -70,8 +70,8 @@
          
            <select name="sexo"required >
             <option value="x" disabled selected>Seleccione Genero</option>
-            <option value="Femenino"<?php if($usuario[12] == "Femenino"){ echo "selected"; } ?> >Femenino</option>
-            <option value="Masculino" <?php if($usuario[12] == "Masculino"){ echo "selected"; } ?>>Masculino</option>
+            <option value="Femenino"<?php if($usuario[12] == "FEMENINO"){ echo "selected"; } ?> >Femenino</option>
+            <option value="Masculino" <?php if($usuario[12] == "MASCULINO"){ echo "selected"; } ?>>Masculino</option>
             <option value="otro" <?php if($usuario[12] == "otro"){ echo "selected"; } ?>>otro</option>
           </select>
             

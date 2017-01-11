@@ -38,16 +38,16 @@ class Gestion_Productos{
 
 
 	
-    function Readbyid($id_productos)
+    function Readbyid($id_producto)
     {
         //instacioamos y nos conectamos a la  base de  datos
         $conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         
         //crear  el  query  que vamos a realizar.
-        $consulta= "SELECT * FROM producto WHERE id_productos=? ";
+        $consulta= "SELECT * FROM producto WHERE id_producto=? ";
         $query=$conexion->prepare($consulta);
-        $query->execute(array($id_productos));
+        $query->execute(array($id_producto));
         
         $resultado=$query->fetch(PDO::FETCH_BOTH);
         return $resultado;

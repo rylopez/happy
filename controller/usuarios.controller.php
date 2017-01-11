@@ -109,8 +109,8 @@
 				#iniciamos las variables   que se envian desde el  formulario  y las  que necesito  para  almacenar la tabla.
 			$tipo_documento     	=$_POST["tipo_documento"];         
 			$numero_documento      	=$_POST["numero_documento"];
-			$clave1 			=$_POST["clave1"];
-			$clave2 			=$_POST["clave2"];
+			$clave 			=$_POST["clave"];
+			
 			$nombre      	=$_POST["nombre"];
 			$nombre         =strtoupper($nombre);
 			$apellido    	=$_POST["apellido"];
@@ -130,7 +130,7 @@
 			$autor			=$_POST["autor"];
 			$id_usuario     =$_POST["id_usuario"];
 			try {
-				Gestion_usuarios::update($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario);
+				Gestion_usuarios::update($tipo_documento,$numero_documento,$clave,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor,$id_usuario);
 				$msn= base64_encode("se ha actualizado correctamente :D");
 				$tipom=base64_encode("success");
 				
