@@ -69,14 +69,14 @@ class Gestion_Productos{
     }
 
 
-    function Update($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$autor,$id_productos){
+    function Update($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$cantidad,$id_tipoproducto,$talla,$sexo,$descripcion,$autor,$id_producto){
     	$conexion=happy_BD::Connect();
         $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $fecha_creacion=date("Y-m-d");
 
-        $consulta= "UPDATE productos SET referencia=?,nombre=?,valor_compra=?,valor_venta=?, iva=?, descuento=?,estado=?,cant_existente=?,id_tipoproducto=?,id_proveedor=?,id_empresa=?, fecha_creacion=?,autor=? WHERE id_productos=?";
+        $consulta= "UPDATE producto SET referencia=?,nombre=?,valor_compra=?,valor_venta=?, iva=?, descuento=?,cantidad=?,id_tipoproducto=?,talla=?,sexo=?,descripcion=?, fecha_creacion=?,autor=? WHERE id_producto=?";
         $query=$conexion->prepare($consulta);
-        $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$fecha_creacion,$autor,$id_productos));
+        $query->execute(array($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$cantidad,$id_tipoproducto,$talla,$sexo,$descripcion,$fecha_creacion,$autor,$id_producto));
 
         happy_BD::Disconnect();
     }

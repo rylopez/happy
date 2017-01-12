@@ -17,31 +17,26 @@
    	    $iva               =$_POST["iva"];
    	    $descuento         =$_POST["descuento"];
    	    $estado            =$_POST["estado"];
-   	    $cant_existente    =$_POST["cant_existente"];
-   	    $id_tipoproducto  = $_POST["id_tipoproducto"];
-   	    $id_proveedor      = $_POST["id_proveedor"];
-   	    $id_empresa        =$_POST["id_empresa"];
+   	    $cantidad          =$_POST["cantidad"];
+   	    $id_tipoproducto   =$_POST["id_tipoproducto"];
+   	    $sexo              =$_POST["sexo"];
+   	    $talla             =$_POST["talla"];
+   	    $talla             =strtoupper($talla);
+   	    $descripcion       =strtoupper($_POST["descripcion"]);   	    
    	    $autor             =$_POST["autor"];
+   	    $id_producto       =$_POST["id_producto"];
    	    
-   	    $existente=Gestion_Productos::veref_exist($referencia,$id_empresa);
-				
-			if($existente[1]==$referencia){
-				$tipomensaje = base64_encode("success"); 
-				$m=  base64_encode("La referencia de la  ya se encuentra en uso");
-                header("location: ../views/dashboard.php?m=".$m."&tm=".$tipomensaje);
-
-			 }else{
-			 	
-				try {
-				Gestion_Productos::Create($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$estado,$cant_existente,$id_tipoproducto,$id_proveedor,$id_empresa,$autor);
-				$tipomensaje = base64_encode("success"); 
-				$m= base64_encode("su registro se creo correctamente :D");	
+   	  
+		try {
+				Gestion_Productos::Update($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$cantidad,$id_tipoproducto,$talla,$sexo,$descripcion,$autor,$id_producto);
+				$tipomsn = base64_encode("success"); 
+				$msn= base64_encode("su registro se Actualizo  correctamente :D");	
 						
-			     } catch (Exception $e) {
+		 } catch (Exception $e) {
 				 $m=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
 			         }
-			    header("location: ../views/dashboard.php?m=".$m."&tm=".$tipomensaje);
-			 }
+			    header("location: ../view/index.php?p=".base64_encode('gestion_productos')."&m=".$msn."&tm=".$tipomsn);
+			 
 
    	    break;
    	
@@ -61,6 +56,7 @@
    	    $descripcion      =$_POST["descripcion"];
    	    $sexo              =$_POST["sexo"];
    	    $talla             =$_POST["talla"];
+   	    $talla             =strtoupper($talla);
    	    $autor             =$_POST["autor"];
    	    $id_productos       =$_POST["id_productos"];
 

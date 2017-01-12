@@ -42,7 +42,10 @@ switch ($page) {
 	break;
 
 
+case  'actualizar_foto_producto':
 
+	 require_once("ActualizarFotoProducto.php");
+	break;
 	
 
 

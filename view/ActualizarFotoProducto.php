@@ -63,13 +63,13 @@
             <div id="talla"></div>
              <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
              <input type="hidden" name="id_producto" value="<?php echo $producto [0] ?>">
-
+             
             <textarea name="descripcion" placeholder="Descripcion Producto" data-toggle="tooltip" title="DEscripcion Producto"  COLS=100 ROWS=30  > <?php echo $producto[7] ?></textarea>       
 
 
 
       <button class="guardar"   type="botton" name="acc" value="u">Guardar</button>
-      <button class="cancelar" <?php echo " href='index.php?p=".base64_encode('gestion_productos')."'"; ?>>Cancelar</button> 
+      <button type="botton" class="cancelar" <?php echo " href='index.php?p=".base64_encode('gestion_productos')."'"; ?>>Cancelar</button> 
             
 
 
