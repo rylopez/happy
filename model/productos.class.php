@@ -80,6 +80,17 @@ class Gestion_Productos{
 
         happy_BD::Disconnect();
     }
+  function updatefoto($url_foto1,$url_foto2,$url_foto3,$autor,$id_producto){
+        $conexion=happy_BD::Connect();
+        $conexion->SetAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $fecha_creacion=date("Y-m-d");
+
+        $consulta= "UPDATE producto SET url_foto1=?,url_foto2=?,url_foto3=?, fecha_creacion=?,autor=? WHERE id_producto=?";
+        $query=$conexion->prepare($consulta);
+        $query->execute(array($url_foto1,$url_foto2,$url_foto3,$fecha_creacion,$autor,$id_producto));
+
+        happy_BD::Disconnect();
+    }
 
 
     function delete($id){
