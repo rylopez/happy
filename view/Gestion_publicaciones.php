@@ -7,7 +7,7 @@
   require_once("../model/publicaciones.class.php");
 
              $publicacion= Gestion_Publicaciones::ReadAll();
-		     $titulo= "GESTIONAR PRODUCTOS";
+		     $titulo= "GESTIONAR Publicaciones";
 
 		      echo " <h2>".$titulo."</h2>
 		      <a class='waves-effect black btn' href='index.php?p=".base64_encode('nueva_publicacion')."' ><i class='fa fa-industry' aria-hidden='true'></i>Nueva Publicacion</a>";

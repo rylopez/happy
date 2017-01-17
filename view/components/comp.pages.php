@@ -47,7 +47,7 @@ case  'actualizar_foto_producto':
 	 require_once("ActualizarFotoProducto.php");
 	break;
 	
-case 'gestion_publicacion':
+case 'gestion_publicaciones':
 
 		require_once("Gestion_publicaciones.php");
 	break;
