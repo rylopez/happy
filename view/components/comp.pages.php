@@ -47,7 +47,27 @@ case  'actualizar_foto_producto':
 	 require_once("ActualizarFotoProducto.php");
 	break;
 	
+case 'gestion_publicacion':
 
+		require_once("Gestion_publicaciones.php");
+	break;
+
+	case  'nueva_publicacion':
+
+	 require_once("nueva_publicacion.php");
+	break;
+
+
+	case  'actualizar_publicacion':
+
+	 require_once("ActualizarPublicacion.php");
+	break;
+
+
+case  'actualizar_file_publicacion':
+
+	 require_once("ActualizarFilePublicacion.php");
+	break;
 
 
 }
