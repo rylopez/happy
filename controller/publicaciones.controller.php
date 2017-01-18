@@ -1,7 +1,7 @@
 <?php
 
  require_once("../model/db_conn.php");
- require_once("../model/productos.class.php");
+ require_once("../model/publicaciones.class.php");
 
   $accion = $_REQUEST["acc"];
    switch ($accion) {
@@ -43,8 +43,8 @@
    	   case 'c':
 
 
-   		$titulo       = $_POST["titulo"];
-      $titulo       =strtoupper($titulo);   
+   		
+      $titulo       =strtoupper($_POST["Titulo"]);   
    	  $texto            = $_POST["texto"];
    	  $id_producto   =$_POST["id_producto"];
    	  $autor             =$_POST["autor"];
@@ -57,7 +57,7 @@
 } else {
 	//ahora vamos a verificar si el tipo de archivo es un tipo de imagen permitido.
 	//y que el tamano del archivo no exceda los 100kb
-	$permitidos = array("image/jpg", "image/jpeg", "image/png","video/avi","video/mp4","video/mpeg");
+	$permitidos = array("image/jpg", "image/jpeg", "image/png");
 	$limite_kb = 6000;
 
 	if (in_array($_FILES['file']['type'], $permitidos) && $_FILES['file']['size'] <= $limite_kb * 1024){
@@ -77,13 +77,7 @@
           }elseif (($_FILES['file']['type'] =="image/png" )){
           	$formato=".png";
           }
-          elseif (($_FILES['file']['type'] =="video/mp4" )) {
-          	 $formato=".mp4";
-          } elseif (($_FILES['file']['type'] =="video/avi" )) {
-          	$formato=".avi";
-          }else{
-          	$formato=".mpeg";
-          }
+          
 
          $url_archivo="../view/recursos/publicaciones/" .$titulo."_file".$formato;
 		 
@@ -101,7 +95,7 @@
 			//almacenara true o false
 		   
 		  try {
-	Gestion_publicaciones::create($titulo,$texto,$url_archivo,$id_producto,$autor);
+	     Gestion_Publicaciones::Create($titulo,$texto,$url_archivo,$id_producto,$autor);
 				$tipomsn = base64_encode("success"); 
 				$msn= base64_encode("Se creo la publicacion correctamente");
 				

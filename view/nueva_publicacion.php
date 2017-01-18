@@ -23,7 +23,7 @@
           <input   type="text" placeholder="Titulo " name="Titulo"  required data-toggle="tooltip"  title="Titulo" />
            <textarea name="texto" placeholder="Escribe aqui el Articulo" COLS=100 ROWS=30  data-toggle="tooltip" title="Texto"></textarea>
               
-           <label>Adjunte un Archivo multimedia</label>
+           <label>Adjunte imagen</label>
            <input   type="file" name="file"  required data-toggle="tooltip"  title="Titulo" />
 
             <select    name="id_producto"  required>
@@ -43,7 +43,7 @@
             
 
 
-
+      <br>
       <button class="guardar"   type="botton" name="acc" value="c">Guardar</button>
       <button type="botton" class="cancelar" ><?php echo " <a href=index.php?p=".base64_encode('gestion_publicaciones')."'>cancelar</a>"; ?></button> 
             

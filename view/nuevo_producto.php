@@ -24,11 +24,12 @@
             <input   type="number" name="iva" placeholder="Iva" required />
 
             <input   type="number" name="cantidad" placeholder="Cantidad Existentes" required />
-
+            <br>
+            <label>Adjunte imagen 1</label>
             <input   type="file" name="foto1" placeholder="Foto 1 producto" required />
-
+            <label>Adjunte imagen 2</label>
             <input   type="file" name="foto2" placeholder="Foto 2 producto" required />
-
+            <label>Adjunte imagen 3</label>
             <input   type="file" name="foto3" placeholder="Foto 3 producto" required />
 
             <select    name="sexo"  required>
