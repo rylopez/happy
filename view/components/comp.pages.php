@@ -66,7 +66,7 @@ case 'gestion_publicaciones':
 
 case  'actualizar_file_publicacion':
 
-	 require_once("ActualizarFilePublicacion.php");
+	 require_once("actualizarfilepublicacion.php");
 	break;
 
 

@@ -32,7 +32,7 @@ class Gestion_Publicaciones{
         //crear  el  query  que vamos a realizar.
         $consulta= "SELECT * FROM publicacion WHERE id_publicacion=? ";
         $query=$conexion->prepare($consulta);
-        $query->execute(array($id_producto));
+        $query->execute(array($id_publicacion));
         
         $resultado=$query->fetch(PDO::FETCH_BOTH);
         return $resultado;

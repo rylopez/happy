@@ -8,34 +8,23 @@
    case 'u':
 
 
-        $referencia        = $_POST["referencia"];
-        $referencia        =strtoupper($referencia);   
-   	    $nombre            = $_POST["nombre"];
-   	    $nombre            =strtoupper($nombre);   	    
-   	    $valor_compra      = $_POST["valor_compra"];   	    
-   	    $valor_venta       = $_POST["valor_venta"];
-   	    $iva               =$_POST["iva"];
-   	    $descuento         =$_POST["descuento"];
-   	    $estado            =$_POST["estado"];
-   	    $cantidad          =$_POST["cantidad"];
-   	    $id_tipoproducto   =$_POST["id_tipoproducto"];
-   	    $sexo              =$_POST["sexo"];
-   	    $talla             =$_POST["talla"];
-   	    $talla             =strtoupper($talla);
-   	    $descripcion       =strtoupper($_POST["descripcion"]);   	    
-   	    $autor             =$_POST["autor"];
-   	    $id_producto       =$_POST["id_producto"];
+      $titulo       =strtoupper($_POST["Titulo"]);   
+      $texto            = $_POST["texto"];
+      $id_producto   =$_POST["id_producto"];
+      $autor             =$_POST["autor"];
+      $id_publicacion   =$_POST["id_publicacion"];
+        
    	    
    	  
 		try {
-				Gestion_Productos::Update($referencia,$nombre,$valor_compra,$valor_venta,$iva,$descuento,$cantidad,$id_tipoproducto,$talla,$sexo,$descripcion,$autor,$id_producto);
+				Gestion_Publicaciones::Update($titulo,$texto,$id_producto,$autor,$id_publicacion);
 				$tipomsn = base64_encode("success"); 
 				$msn= base64_encode("su registro se Actualizo  correctamente :D");	
 						
 		 } catch (Exception $e) {
 				 $m=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
 			         }
-			    header("location: ../view/index.php?p=".base64_encode('gestion_productos')."&m=".$msn."&tm=".$tipomsn);
+			    header("location: ../view/index.php?p=".base64_encode('gestion_publicaciones')."&m=".$msn."&tm=".$tipomsn);
 			 
 
    	    break;
@@ -120,70 +109,49 @@ break;
      case 'uf':
 
 
-        $referencia        = $_POST["referencia"];
-        $referencia        =strtoupper($referencia);   
-        $url_foto1         =$_POST["url_foto1"];
-        $url_foto2         =$_POST["url_foto2"];
-        $url_foto3         =$_POST["url_foto3"];
-        $autor             =$_POST["autor"];
-        $id_producto       =$_POST["id_producto"];
+       $titulo       =strtoupper($_POST["titulo"]);   
+      $url_file      =$_POST["url_file"];
+      $autor             =$_POST["autor"];
+      $id_publicacion   =$_POST["id_publicacion"];
+        
 
-  if (($_FILES["foto1"]["error"] > 0) || ($_FILES["foto2"]["error"] > 0) || ($_FILES["foto2"]["error"] > 0)) {
+  if ($_FILES["file"]["error"] > 0)  {
     $tipomsn = base64_encode("warning"); 
   $msn= base64_encode("lo sentimos ha ocurrido un Error :(");
-  header("location: ../view/index.php?p=".base64_encode('actualizar_foto_producto')."&m=".$msn."&tm=".$tipomsn);
+  header("location: ../view/index.php?p=".base64_encode('actualizar_file_publicacion')."&m=".$msn."&tm=".$tipomsn);
 } else {
   //ahora vamos a verificar si el tipo de archivo es un tipo de imagen permitido.
   //y que el tamano del archivo no exceda los 100kb
   $permitidos = array("image/jpg", "image/jpeg", "image/png");
-  $limite_kb = 3000;
+  $limite_kb = 5000;
 
-  if ((in_array($_FILES['foto1']['type'], $permitidos) && $_FILES['foto1']['size'] <= $limite_kb * 1024) && (in_array($_FILES['foto2']['type'], $permitidos) && $_FILES['foto2']['size'] <= $limite_kb * 1024) && (in_array($_FILES['foto3']['type'], $permitidos) && $_FILES['foto3']['size'] <= $limite_kb * 1024)){
+  if (in_array($_FILES['file']['type'], $permitidos) && $_FILES['file']['size'] <= $limite_kb * 1024){
     //esta es la ruta donde copiaremos la imagen
     //recuerden que deben crear un directorio con este mismo nombre
     //en el mismo lugar donde se encuentra el archivo subir.php
-     unlink($url_foto1);
-     unlink($url_foto2);
-     unlink($url_foto3);
-      if ((file_exists("../view/recursos/productos/" .$referencia."_foto1")) || (file_exists("../view/recursos/productos/" .$referencia."_foto2")) || (file_exists("../view/recursos/productos/" .$referencia."_foto3")))  {
+     unlink($url_file);
+     
+      if (file_exists("../view/recursos/publicaciones/" .$titulo."_file")) {
       $tipomsn = base64_encode("warning"); 
        $msn= base64_encode("lo sentimos estos archivos se encuentran repetidos :(");
-       header("location: ../view/index.php?p=".base64_encode('actualizar_foto_producto')."&m=".$msn."&tm=".$tipomsn); 
+       header("location: ../view/index.php?p=".base64_encode('actualizar_file_publicacion')."&m=".$msn."&tm=".$tipomsn); 
             
          } else {
-         if ($_FILES['foto1']['type'] =="image/jpg" ) {
-             $formato1=".jpg";
-          } elseif (($_FILES['foto1']['type'] =="image/jpeg" )) {
-            $formato1=".jpeg";
+         if ($_FILES['file']['type'] =="image/jpg" ) {
+             $formato=".jpg";
+          } elseif (($_FILES['file']['type'] =="image/jpeg" )) {
+            $formato=".jpeg";
           }else{
-            $formato1=".png";
-          }
-          if ($_FILES['foto2']['type'] =="image/jpg" ) {
-             $formato2=".jpg";
-          } elseif (($_FILES['foto2']['type'] =="image/jpeg" )) {
-            $formato2=".jpeg";
-          }else{
-            $formato2=".png";
-          }
-          if ($_FILES['foto3']['type'] =="image/jpg" ) {
-             $formato3=".jpg";
-          } elseif (($_FILES['foto3']['type'] =="image/jpeg" )) {
-            $formato3=".jpeg";
-          }else{
-            $formato3=".png";
+            $formato=".png";
           }
 
-         $url_foto1="../view/recursos/productos/" .$referencia."_foto1".$formato1;
-     $url_foto2="../view/recursos/productos/" .$referencia."_foto2".$formato2;
-     $url_foto3="../view/recursos/productos/" .$referencia."_foto3".$formato3;
+         $url_archivo="../view/recursos/publicaciones/" .$titulo."_file".$formato;
+     
 
  
-          $resultado1=@move_uploaded_file($_FILES["foto1"]["tmp_name"], 
-          $url_foto1);
-          $resultado2=@move_uploaded_file($_FILES["foto2"]["tmp_name"], 
-          $url_foto2);
-          $resultado3=@move_uploaded_file($_FILES["foto3"]["tmp_name"], 
-          $url_foto3);
+          $resultado=@move_uploaded_file($_FILES["file"]["tmp_name"], 
+          $url_archivo);
+          
     
     //comprobamos si este archivo existe para no volverlo a copiar.
     //pero si quieren pueden obviar esto si no es necesario.
@@ -193,22 +161,22 @@ break;
       //almacenara true o false
        
       try {
-  Gestion_productos::updatefoto($url_foto1,$url_foto2,$url_foto3,$autor,$id_producto);
+  Gestion_publicaciones::updatefile($url_archivo,$autor,$id_publicacion);
         $tipomsn = base64_encode("success"); 
-        $msn= base64_encode("Los archivos del producto, se actualizaron exitosamente :D");
+        $msn= base64_encode("el archivo de la publicacion, se actualizo exitosamente :D");
         
         
       } catch (Exception $e) {
         $mensaje=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
       }
-      header("location: ../view/index.php?p=".base64_encode('gestion_productos')."&m=".$msn."&tm=".$tipomsn);
+      header("location: ../view/index.php?p=".base64_encode('gestion_publicaciones')."&m=".$msn."&tm=".$tipomsn);
     
     
     }
     }else {
       $tipomsn = base64_encode("warning"); 
     $msn= base64_encode("archivos no permitidos, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes ");
-    header("location: ../view/index.php?p=".base64_encode('actualizar_foto_producto')."&m=".$msn."&tm=".$tipomsn);
+    header("location: ../view/index.php?p=".base64_encode('actualizar_File_producto')."&m=".$msn."&tm=".$tipomsn);
     
   }
 }   
