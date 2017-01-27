@@ -17,13 +17,10 @@
   <link rel="stylesheet" type="text/css" href="recursos/plugins/sweetalert/dist/sweetalert.css">
   <link rel="stylesheet" href="recursos/plugins/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="recursos/plugins/bootstrap/css/bootstrap.min.css">
-  
-  <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-
+  <script src="recursos/plugins/bootstrap/js/jquery.min.js"></script>
   <script src="recursos/plugins/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript" charset="utf8" src="recursos/plugins/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="recursos/plugins/sweetalert/dist/sweetalert.min.js"></script>
-
  <script type="text/javascript">
     $(document).ready( function () {
               $('#datatable').DataTable({  
@@ -79,14 +76,6 @@
                   }
       ?>
      $('[data-toggle="tooltip"]').tooltip(); 
-      $('#nav-icon').click(function(){
-    $(this).toggleClass('animate-icon');
-    $('#overlay').fadeToggle();
-     });
-       $('#overlay').click(function(){
-       $('#nav-icon').removeClass('animate-icon');
-        $('#overlay').toggle();
-       });
    });
  </script>
   
@@ -99,16 +88,33 @@
 <div id="nav" class="container">
                    
   <ul class="nav nav-tabs " role="tablist">
-    <li><div id="nav-icon">
+    <li><a class="iconmenu" data-toggle="dropdown" ><i id ="menu" class="fa fa-bars lead" aria-hidden="true"></i></a>
 
-  <span></span>
-  <span></span>
-  <span></span>
+   <ul id="mimenu" class="dropdown-menu">
+      <div class="menu">
+            <a class="yellow" href="#"><i  class="fa fa-home iconos" aria-hidden="true"></i><h4 class="letramenu"> Inicio</h4></a>
+            <a class="pink" href="#"><i  class="fa fa-venus iconos" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellas </h4></a>
+            <a class="green" href="#"><i  class="fa fa-mars iconos" aria-hidden="true"></i> <h4 class="letramenu"> Para Ellos</h4></a>
+            <a class="purple" href="#"><i  class="fa fa-transgender-alt iconos" aria-hidden="true"></i><h4 class="letramenu"> Sexo Inteligente</h4></a>
+             <?php 
+           
+        if(!isset($_SESSION["id_usuario"])){  
+            }else{
+         include_once("components/menu.php");
+         } 
+            if(!isset($_SESSION["id_usuario"])){  ?>
+            <a href="#" class="azulrey" data-toggle="modal" data-target="#myModal"><i  class="fa fa-sign-in iconos" aria-hidden="true"></i><h4 class="letramenu"> Iniciar Sesión</h4></a>
+       <?php }else{
+          ?>
 
-</div>
-</li>
-    <li><a class="cd-nav-trigger cd-text-replace" href="#primary-nav" id="toggle">
-          <span aria-hidden="true" class="cd-icon"></span></a></li>
+    
+          <a href="cerrarsesion.php" class="azulrey"> <i  id="iconos" class="fa fa-sign-out" aria-hidden="true"></i> <h4 class="letramenu"> Cerrar Sesión</h4></a>
+      <?php  } ?>
+           
+            
+        </div>
+    </ul>
+     </li> 
     <li><a href="#"><img src="recursos/logos/logo.png" style="width:60px;"></a></li>
     <li class="dropdown">
       <?php
@@ -123,26 +129,20 @@
     </ul>
       <?php } ?>
      </li>
+
+ 
           
-  </ul> 
+  </ul>
+  
  
 </div>
+     
+    
+    
+  
+
+     
 </nav>
-
-<div id="overlay">
-
-  <div>
-
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-
-  </div>
-
-</div>
-
 
 <div>
   <?php include_once("components/comp.pages.php") ?>
