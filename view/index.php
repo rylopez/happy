@@ -134,11 +134,25 @@
   <div>
 
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="index.php?p=<?php echo base64_encode('')?>"><h2>Inicio</h2></a></li>
+      4<li><a href="#"><h2>Para Ellas</h2></a></li>
+      <li><a href="#"><h2>Para Ellos</h2></a></li>
+      <li><a href="#"><h2>Sexo Inteligente</h2></a></li>
+      <li><a href="#"><h2>Para Ellos</h2></a></li>
+          <?php 
+           
+        if(!isset($_SESSION["id_usuario"])){  
+            }else{
+         include_once("components/menu.php");
+         } 
+            if(!isset($_SESSION["id_usuario"])){  ?>
+            <li><a href="#" class="azulrey" data-toggle="modal" data-target="#myModal"><h2> Iniciar Sesión</h2></a></li>
+       <?php }else{
+          ?>
+          <li><a href="cerrarsesion.php"><h2> Cerrar Sesión</h2></a></li>
+      <?php  } ?>
     </ul>
-
+ 
   </div>
 
 </div>

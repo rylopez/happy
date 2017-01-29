@@ -1,4 +1,9 @@
   @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+  @font-face {
+       font-family: 'zantroke';
+       src = url('../tipografias/Zantroke.otf');
+
+}
   .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -28,9 +33,9 @@
   }
   #nav-icon {
   position: relative;
-  margin: 0 auto;
-  width: 45px;
-  height: 40px;
+  margin-top: 10px;
+  width: 50px;
+  height: 25px;
   z-index: 10;
   /* Bring icon ontop of overlay */
   cursor: pointer;
@@ -45,7 +50,7 @@
   display: block;
   width: 100%;
   height: 4px;
-  background: teal;
+  background: white;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -95,8 +100,8 @@
   width: 100%;
   /* Want a left- or right sided navigation instead? Just play around with the width! */
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  z-index:1;
+  background: rgba(0, 0, 0, 0.9);
+  z-index:5;
 }
 
 #overlay div {
@@ -119,7 +124,10 @@
   padding: 0;
   color: white;
   text-align: center;
-  size-font: 17px !important;
+  font-size:-50px !important;
+  
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 
@@ -166,257 +174,8 @@
     color: white;
     size: 30px !important;
   }
-.nav-trigger {
-  position: absolute;
-  z-index: 9999;
-  top: 24px;
-  right: 5%;
-  height: 52px;
-  width: 52px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.8);
-  -webkit-transition: background 0.2s;
-  -moz-transition: background 0.2s;
-  transition: background 0.2s;
-}
-
-.nav-trigger .nav-icon, .nav-trigger .nav-icon::before, .nav-trigger .nav-icon::after {
-  /* menu icon created in CSS */
-  position: absolute;
-  background-color: #ffffff;
-  border-radius: 2px;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.no-touch .nav-trigger:hover { background-color: black; }
-
-.nav-trigger .nav-icon {
-  /* middle line of the menu icon */
-  display: inline-block;
-  width: 18px;
-  height: 2px;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  -webkit-transition: -webkit-transform 0.3s, background-color 0.3s;
-  -moz-transition: -moz-transform 0.3s, background-color 0.3s;
-  transition: transform 0.3s, background-color 0.3s;
-}
-
-.nav-trigger .nav-icon::before, .nav-trigger .nav-icon::after {
-  /* upper and lower lines of the menu icon */
-  content: '';
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  transition: transform 0.3s;
-}
-
-.nav-trigger .nav-icon::before {
-  -webkit-transform: translateY(-6px);
-  -moz-transform: translateY(-6px);
-  -ms-transform: translateY(-6px);
-  -o-transform: translateY(-6px);
-  transform: translateY(-6px);
-}
-
-.nav-trigger .nav-icon::after {
-  -webkit-transform: translateY(6px);
-  -moz-transform: translateY(6px);
-  -ms-transform: translateY(6px);
-  -o-transform: translateY(6px);
-  transform: translateY(6px);
-}
-
-.nav-trigger.project-open .nav-icon { /* user selects a projects - transform the icon into a 'X' */
-background-color: rgba(255, 255, 255, 0); }
-
-.nav-trigger.project-open .nav-icon::before, .nav-trigger.project-open .nav-icon::after { background-color: white; }
-
-.nav-trigger.project-open .nav-icon::before {
-  -webkit-transform: translateY(0) rotate(45deg);
-  -moz-transform: translateY(0) rotate(45deg);
-  -ms-transform: translateY(0) rotate(45deg);
-  -o-transform: translateY(0) rotate(45deg);
-  transform: translateY(0) rotate(45deg);
-}
-
-.nav-trigger.project-open .nav-icon::after {
-  -webkit-transform: translateY(0) rotate(-45deg);
-  -moz-transform: translateY(0) rotate(-45deg);
-  -ms-transform: translateY(0) rotate(-45deg);
-  -o-transform: translateY(0) rotate(-45deg);
-  transform: translateY(0) rotate(-45deg);
-}
-
-.nav-trigger.nav-visible .nav-icon {
-  /* user opens the navigation - transform the icon into an arrow */
-  -webkit-transform: translateY(-50%) translateX(-50%);
-  -moz-transform: translateY(-50%) translateX(-50%);
-  -ms-transform: translateY(-50%) translateX(-50%);
-  -o-transform: translateY(-50%) translateX(-50%);
-  transform: translateY(-50%) translateX(-50%);
-}
-
-.nav-trigger.nav-visible .nav-icon::after {
-  -webkit-transform: translateX(5px) translateY(3px) rotate(-45deg) scaleX(0.5);
-  -moz-transform: translateX(5px) translateY(3px) rotate(-45deg) scaleX(0.5);
-  -ms-transform: translateX(5px) translateY(3px) rotate(-45deg) scaleX(0.5);
-  -o-transform: translateX(5px) translateY(3px) rotate(-45deg) scaleX(0.5);
-  transform: translateX(5px) translateY(3px) rotate(-45deg) scaleX(0.5);
-}
-
-.nav-trigger.nav-visible .nav-icon::before {
-  -webkit-transform: translateX(5px) translateY(-3px) rotate(45deg) scaleX(0.5);
-  -moz-transform: translateX(5px) translateY(-3px) rotate(45deg) scaleX(0.5);
-  -ms-transform: translateX(5px) translateY(-3px) rotate(45deg) scaleX(0.5);
-  -o-transform: translateX(5px) translateY(-3px) rotate(45deg) scaleX(0.5);
-  transform: translateX(5px) translateY(-3px) rotate(45deg) scaleX(0.5);
-}
-@media only screen and (min-width: 1024px) {
-
-.nav-trigger.nav-visible .nav-icon {
-  -webkit-transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-  -moz-transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-  -ms-transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-  -o-transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-  transform: translateY(-50%) translateX(-50%) rotate(-90deg);
-}
-
-.nav-trigger.nav-visible .nav-icon::after {
-  -webkit-transform: translateX(-5px) translateY(3px) rotate(45deg) scaleX(0.5);
-  -moz-transform: translateX(-5px) translateY(3px) rotate(45deg) scaleX(0.5);
-  -ms-transform: translateX(-5px) translateY(3px) rotate(45deg) scaleX(0.5);
-  -o-transform: translateX(-5px) translateY(3px) rotate(45deg) scaleX(0.5);
-  transform: translateX(-5px) translateY(3px) rotate(45deg) scaleX(0.5);
-}
-
-.nav-trigger.nav-visible .nav-icon::before {
-  -webkit-transform: translateX(-5px) translateY(-3px) rotate(-45deg) scaleX(0.5);
-  -moz-transform: translateX(-5px) translateY(-3px) rotate(-45deg) scaleX(0.5);
-  -ms-transform: translateX(-5px) translateY(-3px) rotate(-45deg) scaleX(0.5);
-  -o-transform: translateX(-5px) translateY(-3px) rotate(-45deg) scaleX(0.5);
-  transform: translateX(-5px) translateY(-3px) rotate(-45deg) scaleX(0.5);
-}
-}
-
-/*
-#menu{
-  font-size: 45px;
-  margin-top: 5px
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-#mimenu{
-  background: #111;
-  color: #fff;
-  font-family: 'Open sans', sans-serif;
-  font-weight: 300;
-  font-size: 20pt;
-  width: 900px !important;
-  margin-left: 0px;
-}
-.yellow,.blue,.purple,.orange,.pink,.green,.red,.verdeagua,.azulrey {
-  color: #fff !important;
-  text-decoration: none;
-}
-
-.menu {
-  width: 100%;
-  margin-left: 0px !important;
-
-}
-.menu a {
-  width: 200px;
-  line-height:200px;
-  display: block;
-  margin: 10px;
-  text-align: center;
-  float: left;
-  opacity: 0.3;
-}
-.yellow { background: #fdd22a; }
-.blue { background: #009fe3; }
-.purple { background: #574696; }
-.orange { background: #ee7202; }
-.pink { background: #e61c67; }
-.green { background: #96c11f; }
-.red   { background: #FF0000;}
-.verdeagua { background:#01DFD7; }
-.azulrey { background: #08088A; } 
-
- @media (max-width: 900px) {
-  #mimenu{
-  background: #111;
-  color: #fff;
-  font-family: 'Open sans', sans-serif;
-  font-weight: 300;
-  font-size: 20pt;
-  width: 700px !important;
-  margin-left: 0px;
-}
-
- }
-
- @media (max-width: 700px) {
-  
-  #mimenu{
-  background: #111;
-  color: #fff;
-  font-family: 'Open sans', sans-serif;
-  font-weight: 300;
-  font-size: 20pt;
-  width: 300px !important;
-  margin-left: 0px;
-}
- .menu a {
-  width: 45%;
-  display: block;
-  margin: 5px;
-  text-align: center;
-  float: left;
-  
-}
-} 
-
- 
-
-}
- .iconos{
-  font-size: 2em !important;
 
 
-}
-.letramenu{
-  margin-top:-32px !important;
-}
-.iconnombre {
-  text-decoration: none !important;
-  color: white;
-  margin-top: 10px;
-  margin-right: 40px;
- 
-  
-}*/
 .datatable{
   width: 70%;
   
