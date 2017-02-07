@@ -34,70 +34,24 @@
 			$id_rol			=$_POST["id_rol"];
 			$autor			=$_POST["autor"];
 			$existente=Gestion_Usuarios::veref_exist($correo);
-   
-     if(!preg_match('/^[a-záéóóúàèìòùäëïöüñ\s]+$/i', $nombre))
-    {
-        $mensaje = "<script>document.getElementById('e_nombre').innerHTML='Error, s&oacute;lo se permiten letras';</script>";
-        echo $mensaje;
-    }
-     elseif(!preg_match('/^[a-záéóóúàèìòùäëïöüñ\s]+$/i', $apellido))
-    {
-        $mensaje = "<script>document.getElementById('e_apellido').innerHTML='Error, s&oacute;lo se permiten letras';</script>";
-         echo $mensaje;
-    }
-    elseif(!preg_match('/^[a-záéóóúàèìòùäëïöüñ\s]+$/i', $ciudad))
-    {
-        $mensaje = "<script>document.getElementById('e_ciudad').innerHTML='Error, s&oacute;lo se permiten letras';</script>";
-         echo $mensaje;
-    }
-    
-    else if ($existente[5] == $correo)
-    {
-        $mensaje = "<script>document.getElementById('e_correo').innerHTML='Correo electronico ya se encuentra en uso';</script>";
-         echo $mensaje;
-    }
-    
-    else if(!preg_match('/^([a-z]+[0-9]+)|([0-9]+[a-z]+)/i', $clave1))
-    {
-        $mensaje = "<script>document.getElementById('e_clave1').innerHTML='Obligatorio, letras y n&uacute;meros';</script>";
-         echo $mensaje;
-    }
-    else if(strlen($clave1) < 8)
-    {
-        $mensaje = "<script>document.getElementById('e_clave1').innerHTML='El m&iacute;nimo permitido 8 caracteres';</script>";
-         echo $mensaje;
-    }
-        else if(strlen($clave1) > 16)
-    {
-        $mensaje = "<script>document.getElementById('e_clave1').innerHTML='El m&aacute;ximo permitido 16 caracteres';</script>";
-         echo $mensaje;
-    }
-    else if ($clave1 != $clave2)
-    {
-        $mensaje = "<script>document.getElementById('e_clave2').innerHTML='Las contraseñas  no coinciden';</script>";
-         echo $mensaje;
-    }
-     else if ($edad <= 18)
-    {
-        $mensaje = "<script>document.getElementById('e_edad').innerHTML='Debe ser mayor de edad para registrarse';</script>";
-         echo $mensaje;
-    }
-    else
-    {
+			if ($existente[5] == $correo){
+				$msn=base64_encode(":( ha  ocurrido un error, El correo electronico ya se encuentra registrado");
+				$tipom=base64_encode("warning");
+				header("location: ../view/index.php?p=".base64_encode("nuevo_usuario")."&m=".$msn."&tm=".$tipom);
+			}elseif ($edad < 18) {
+				$msn=base64_encode(":( ha  ocurrido un error, Debe ser mayor de edad para registrarse en esta pagina");
+				$tipom=base64_encode("warning");
+				header("location: ../view/index.php?p=".base64_encode("nuevo_usuario")."&m=".$msn."&tm=".$tipom);
+			} else {
     	try {
 				Gestion_usuarios::Create($tipo_documento,$numero_documento,$clave1,$nombre,$apellido,$telefono,$direccion,$ciudad,$correo,$celular,$edad,$sexo,$estado,$id_rol,$autor);
 				$msn= base64_encode("Su registro se creo correctamente :D");	
 				$tipom=base64_encode("success");
-				$mensaje = "<script>window.location='index.php?p=".base64_encode("Gestion_usuarios")."&m=".$msn."&tm=".$tipom."';</script>";
-				
-						
-			     } catch (Exception $e) {
+				} catch (Exception $e) {
 				 $msn=base64_encode(":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine());
 				 $tipom=base64_encode("warning");
-				 $mensaje ="<script>window.location='index.php?p=".base64_encode("Gestion_usuarios")."&m=".$msn."&tm=".$tipom."';</script>";
-				
-			         }
-			         echo $mensaje;
+				}
+			  header("location: ../view/index.php?p=".base64_encode("gestion_usuarios")."&m=".$msn."&tm=".$tipom);      
 			        
     }
 			
@@ -138,7 +92,7 @@
 				$msn=":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine();
 				$tipom=base64_encode("warning");
 			}
-			header("location: ../view/index.php?m=".$msn."&tm=".$tipom);
+			header("location: ../view/index.php?p=".base64_encode("gestion_usuarios")."&m=".$msn."&tm=".$tipom); 
 
 
 				break;
@@ -157,7 +111,7 @@
 				$msn=base64_encode(":( ha  ocurrido un error, el error  fue: ".$e->getMessage()." en ".$e->getFile(). " en la linea".$e->getLine());
 				$tipom=base64_encode("warning");
 			}
-			header("location: ../views/dashboard.php?m=".$msn."&tm=".$tipom);
+			header("location: ../view/index.php?p=".base64_encode("gestion_usuarios")."&m=".$msn."&tm=".$tipom); 
 
 
 				break;

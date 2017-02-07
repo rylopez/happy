@@ -1,8 +1,13 @@
 
  
 <div class="row contenedor">
-<div class="col-sm-12 col-md-5 col-lg-3 menurapido">
- <?php
+<div class="col-md-3 col-lg-2">
+  
+  
+</div>
+
+<div class="col-sm-12 col-md-7 col-lg-9 formulario">
+<?php
 
 
   require_once("../model/db_conn.php");
@@ -11,16 +16,11 @@
              $usuarios= Gestion_Usuarios::ReadAll();
 		      $titulo= "GESTIONAR USUARIOS";
 
-		      echo " <h2>".$titulo."</h2>
-		      <a class='waves-effect black btn' href='index.php?p=".base64_encode('nuevo_usuario')."' ><i class='fa fa-user-plus'></i>Nuevo Usuario</a>";
+		      echo " <h2 class='gestionar'>".$titulo."</h2>
+		      <a class='btn new' href='index.php?p=".base64_encode('nuevo_usuario')."' ><i class='fa fa-user-plus'></i>Nuevo Usuario</a>";
  
 
 ?>
-  
-  
-</div>
-
-<div class="col-sm-12 col-md-7 col-lg-9 formulario">
 	<div class="">
 		<div class="table-responsive" >    
 		     
@@ -83,6 +83,8 @@
 		    </table>
 		    </div>
 		    </div>
+</div>
+<div class="col-md-4 col-lg-1 ">
 </div>
 </div>
 

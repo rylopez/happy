@@ -13,7 +13,7 @@
        <button  name="acc" value="l" class="btn btreg btn-info"><h2>Entrar</h2></button>
        </div>
        <div class="col-sm-6 reg">
-       <a  href="index.php?p=<?php echo base64_encode('nuevo_usuario.php'); ?>"><h2>Registrate</h2></a>
+       <a  href="index.php?p=<?php echo base64_encode('nuevo_usuario'); ?>"><h2>Registrate</h2></a>
        <br>
        </div>
       </div>
