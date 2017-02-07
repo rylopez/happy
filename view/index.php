@@ -41,27 +41,7 @@
                 opacity: 0.3
                  }, 200);
               });
-  $("#btnnuevouser").click(function(){
- var url = "../controller/usuarios.controller.php"; // El script a dónde se realizará la petición.
-    $.ajax({
-           type: "POST",
-           url: url,
-           data: $("#nuevousuario").serialize(), // Adjuntar los campos del formulario enviado.
-           success: function(data)
-           {
-               $("#e_nombre").html('');
-               $("#e_apellido").html('');
-               $("#e_ciudad").html('');
-               $("#e_correo").html('');
-               $("#e_clave1").html('');
-               $("#e_clave2").html('');
-               $("#e_edad").html('');
-               $("#mensaje").html(data); // Mostrar la respuestas del script PHP.
-           }
-         });
-
-    return false; // Evitar ejecutar el submit del formulario.
- });
+ 
   $("#tipoproducto").change(function () {
            $("#tipoproducto option:selected").each(function () {
             elegido=$(this).val();
@@ -169,8 +149,8 @@
     </div>
   </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
+<footer class="container-fluid text-center navbar-inverse">
+  <img src="recursos/logos/logo.png" style="width:160px;">
 </footer>
 
 </body>

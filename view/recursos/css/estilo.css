@@ -182,6 +182,19 @@
   margin-left: 25%;
 
 }
+.gestionar{
+   font: 95% Arial, Helvetica, sans-serif;
+     margin-left: 2%;
+      margin-right: 2%;
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 60px;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: 0px -16px 16px -16px;
+
+}
 .form-style-6{
     font: 95% Arial, Helvetica, sans-serif;
      margin-left: 2%;
@@ -268,7 +281,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     width: 48%;
-    padding: 3%;
+    padding: 3%!important;
     background: #43D1AF;
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
@@ -281,7 +294,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     width: 48%;
-    padding: 3%;
+    padding: 2.78% !important;
     background:#797D8B;
     border-bottom: 2px solid #30C29E;
     border-top-style: none;
@@ -296,9 +309,23 @@
 .cancelar:hover{
     background: #5C6171 !important;
 }
-.menurapido{
-  
-   background: #F7F7F7;
+.new{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 48%;
+    padding: 3%!important;
+    background:black;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+    margin-bottom: 25px!important;
+}
+.new:hover{
+    background: #080707 !important;
+}
   
   
 }

@@ -11,23 +11,17 @@
         
 ?>
 <div class="row contenedor">
-
-<div class="col-sm-12 col-md-7 col-lg-9 formulario">
+<div class="col-md-3 col-lg-2 ">
+</div>
+<div class="col-sm-12 col-md-7 col-lg-9 ">
  
 <div class="form-style-6">
 
  
-  <form   action="<?php echo $_SERVER["PHP_SELF"] ?>" id="nuevousuario" method="POST">
+  <form   action="../controller/usuarios.controller.php"  method="POST">
         <h3 ><?php echo $titulo ?></h3>
         
-          <div Id="mensaje"></div>
-          <div id="e_nombre"></div> 
-          <div id="e_apellido"></div>
-          <div id="e_ciudad"></div>
-           <div id="e_correo"></div>
-           <div id="e_clave1"></div>
-           <div id="e_clave2"></div>
-            <div id="e_edad"></div>
+          
           <select name="tipo_documento"  required data-toggle="tooltip" title="Tipo De Documento" >
             <option value="x" disabled selected>Seleccione tipo de documento</option>
             <option value="CC">Cedula de Ciudadanía</option>
@@ -38,39 +32,37 @@
 
           <input type="number" placeholder="Numero de Documento" name="numero_documento" class="validate" required data-toggle="tooltip" title="Numero de Documento" />
               
-            <input type="text" placeholder="Nombres" name="nombre"  required />
+            <input type="text" placeholder="Nombres" name="nombre"  required data-toggle="tooltip"  title="Nombres" />
              
             
-            <input type="text" name="apellido" placeholder="Apellido" required />
+            <input type="text" name="apellido" placeholder="Apellido" required data-toggle="tooltip"  title="Titulo" />
               
             
-            <input type="number" name="celular" placeholder="Número Celular"  required size="11" />
+            <input type="number" name="celular" placeholder="Número Celular"  required size="11" data-toggle="tooltip"  title="Numero Celular"  />
           
-            <input type="number" name="telefono"  placeholder="Número telefofico" required size="10" />
+            <input type="number" name="telefono"  placeholder="Número telefofico" required size="10" data-toggle="tooltip"  title="Numero Telefonico"  />
           
             
-            <input type="text" name="direccion"  placeholder="Dirección" required/ >
+            <input type="text" name="direccion"  placeholder="Dirección" required data-toggle="tooltip"  title="Direccion" />
          
            
-            <input type="text" name="ciudad" placeholder="Ciudad de residencia" required / >
+            <input type="text" name="ciudad" placeholder="Ciudad de residencia" required data-toggle="tooltip"  title="Ciudad"  / >
             
           
             
-            <input type="email" name="correo" placeholder="Correo electronico"  required/ >
+            <input type="email" name="correo" placeholder="Correo electronico"  required data-toggle="tooltip"  title="Correo Electronico" />
            
             
-            <input type="password" name="clave1"  placeholder="Ingrese Contraseña" required/>
-            
+            <input type="password" name="clave1"  placeholder="Ingrese Contraseña" required data-toggle="tooltip"  title="Contraseña" />      
            
-            <input type="password" name="clave2" placeholder="Repita Contraseña" required/>
             
           
       
          
-            <input type="number" name="edad" placeholder="Edad" required/ >
+            <input type="number" name="edad" placeholder="Edad" required data-toggle="tooltip"  title="Edad" />
            
          
-           <select name="sexo"required >
+           <select name="sexo" required data-toggle="tooltip"  title="Sexo" >
             <option value="x" disabled selected>Seleccione Genero</option>
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
@@ -87,7 +79,7 @@
         <?php    }else{ 
           if ($_SESSION["id_rol"]==1) {?>
         
-                <select    name="id_rol" placeholder="Rol Usuario" required>
+                <select    name="id_rol" placeholder="Rol Usuario" required data-toggle="tooltip"  title="Rol usuario" >
                     <option value="x" disabled selected>Seleccione el Rol</option>
                     <option value="1">Administrador</option>
                     <option value="2">Empleado</option>
@@ -96,7 +88,7 @@
          
         <?php }else{  ?>
            
-                <select    name="id_rol" required placeholder="Rol Usuario">
+                <select    name="id_rol" required placeholder="Rol Usuario" data-toggle="tooltip"  title="Rol Usuario" >
                     <option value="" disabled selected>Seleccione el Rol</option>
                     <option value="2">Empleado</option>
                     <option value="3">Cliente</option>                    
@@ -111,7 +103,8 @@
 
 
 
-      <button class="guardar"   id="btnnuevouser" type="submit">Guardar</button>
+      <br>
+      <button class="guardar"   type="submit">Guardar</button>
             <?php
 
       if(!isset($_SESSION["id_usuario"])){
@@ -135,7 +128,7 @@
   </form>
   </div>
   </div>
-  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
-  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+  <div class="col-md-4 col-lg-1 ">
 </div>
+ 
   </div>
