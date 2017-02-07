@@ -14,7 +14,8 @@
 
 ?>
  <div class="row contenedor">
-
+<div class="col-md-3 col-lg-2 ">
+</div>
 <div class="col-sm-12 col-md-7 col-lg-9 formulario">
  
 <div class="form-style-6">
@@ -28,7 +29,7 @@
               
            
 
-            <select    name="id_producto"  required>
+            <select    name="id_producto"  required data-toggle="tooltip"  title="Producto a promocionar">
                     <option value="" disabled selected>Producto a Promocionar</option>
                     <?php
                     echo "<option selected value=".$prod['id_producto'].">".$prod['referencia']." ".$prod['nombre']."</option>";
@@ -51,7 +52,7 @@
         
 
       <button class="guardar"   type="botton" name="acc" value="u">Guardar</button>
-      <button class="cancelar" <?php echo " href='index.php?p=".base64_encode('gestion_publicaciones')."'"; ?>>Cancelar</button> 
+      <a  class=" btn cancelar" href="index.php?p=<?php echo base64_encode("gestion_publicaciones"); ?>">Cancelar</a>
             
 
 
@@ -59,7 +60,6 @@
   </form>
   </div>
   </div>
-  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
-  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+  <div class="col-md-4 col-lg-1 ">
 </div>
 </div>

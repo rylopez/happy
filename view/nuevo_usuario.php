@@ -83,7 +83,8 @@
                     <option value="x" disabled selected>Seleccione el Rol</option>
                     <option value="1">Administrador</option>
                     <option value="2">Empleado</option>
-                    <option value="3">Cliente</option>                    
+                    <option value="3">Cliente</option>
+                    <option value="4" >Experto</option>                     
                 </select>
          
         <?php }else{  ?>

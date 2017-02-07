@@ -9,7 +9,8 @@
 
 ?>
 <div class="row contenedor">
-
+<div class="col-md-3 col-lg-2 ">
+</div>
 <div class="col-sm-12 col-md-7 col-lg-9 formulario">
  
 <div class="form-style-6">
@@ -24,9 +25,9 @@
            <textarea name="texto" placeholder="Escribe aqui el Articulo" COLS=100 ROWS=30  data-toggle="tooltip" title="Texto"></textarea>
               
            <label>Adjunte imagen</label>
-           <input   type="file" name="file"  required data-toggle="tooltip"  title="Titulo" />
+           <input   type="file" name="file"  required data-toggle="tooltip"  title="Imagen publicación" />
 
-            <select    name="id_producto"  required>
+            <select    name="id_producto"  required data-toggle="tooltip"  title="producto a Promocionar">
                     <option value="" disabled selected>Producto a Promocionar</option>
                     <?php
                      foreach ($producto as $row) {
@@ -45,12 +46,11 @@
 
       <br>
       <button class="guardar"   type="botton" name="acc" value="c">Guardar</button>
-      <button type="botton" class="cancelar" ><?php echo " <a href=index.php?p=".base64_encode('gestion_publicaciones')."'>cancelar</a>"; ?></button> 
+       <a  class=" btn cancelar" href="index.php?p=<?php echo base64_encode("gestion_publicaciones"); ?>">Cancelar</a>
             
   </form>
   </div>
   </div>
-  <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
-  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+   <div class="col-md-4 col-lg-1 ">
 </div>
   </div>

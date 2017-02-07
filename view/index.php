@@ -97,7 +97,7 @@
     
     <a   data-toggle="dropdown" id="nomusu" > <?php echo "".($_SESSION["nombre"])." ".($_SESSION["apellido"]);?><i class="fa fa-angle-down" aria-hidden="true"></i></a>
     <ul class="dropdown-menu dropdown-menu-right">
-      <li><a href="#">Actualizar mi perfil</a></li>
+      <li><a href="index.php?p=<?php echo base64_encode("actualizar_usuario");?>&ui=<?php echo base64_encode($_SESSION["id_usuario"]); ?>">Actualizar mi perfil</a></li>
       <li class="divider"></li>
       <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>      
     </ul>

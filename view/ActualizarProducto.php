@@ -9,7 +9,8 @@
 
 ?>
  <div class="row contenedor">
-
+<div class="col-md-3 col-lg-2 ">
+</div>
 <div class="col-sm-12 col-md-7 col-lg-9 formulario">
  
 <div class="form-style-6">
@@ -26,7 +27,7 @@
 
             <input   type="number" name="valor_venta" placeholder="Valor Venta" required data-toggle="tooltip" title="Valor de Venta" value="<?php echo $producto[4] ?>" />
 
-            <input   type="number" name="descuento" placeholder="Descuento" required data-toggle="tooltip" title="Descuento" value="<?php echo $producto[5] ?>"/>
+            <input   type="number" name="descuento" placeholder="Descuento" required data-toggle="tooltip" title=" Porcentaje Descuento" value="<?php echo $producto[5] ?>"/>
 
             <input   type="number" name="iva" placeholder="Iva" required data-toggle="tooltip" title="Porcentaje Iva" value="<?php echo $producto[6] ?>" />
 
@@ -42,7 +43,7 @@
                 </select>
 
             <?php if ($producto[11]==2) { ?>
-            <select    name="id_tipoproducto" id="tipoproducto" required>
+            <select    name="id_tipoproducto" id="tipoproducto" required data-toggle="tooltip" title="Tipo de Producto" >
                     <option value="" disabled selected>Seleccione tipo producto</option>
                     <option value="2" <?php if($producto[11] == "2"){ echo "selected"; } ?> >Lenceria</option>
                    Otros</option>                    
@@ -51,7 +52,7 @@
               
            <?php }else{  ?> 
 
-            <select    name="id_tipoproducto" id="tipoproducto" required>
+            <select    name="id_tipoproducto" id="tipoproducto" required data-toggle="tooltip" title="Tipo de Producto" >
                     <option value="" disabled selected>Seleccione tipo producto</option>
                     <option value="1" <?php if($producto[11] == "1"){ echo "selected"; } ?>>Salud Sexual</option>
                     <option value="2" <?php if($producto[11] == "2"){ echo "selected"; } ?> >Lenceria</option>
@@ -64,12 +65,12 @@
              <input type="hidden" name="autor" value="<?php echo ($_SESSION["nombre"])." ".($_SESSION["apellido"]); ?>">
              <input type="hidden" name="id_producto" value="<?php echo $producto [0] ?>">
 
-            <textarea name="descripcion" placeholder="Descripcion Producto" data-toggle="tooltip" title="DEscripcion Producto"  COLS=100 ROWS=30  > <?php echo $producto[7] ?></textarea>       
+            <textarea name="descripcion" placeholder="Descripcion Producto" data-toggle="tooltip" title="Descripcion detallada del Producto"  COLS=100 ROWS=30  > <?php echo $producto[7] ?></textarea>       
 
 
 
       <button class="guardar"   type="botton" name="acc" value="u">Guardar</button>
-      <button class="cancelar" <?php echo " href='index.php?p=".base64_encode('gestion_productos')."'"; ?>>Cancelar</button> 
+      <a  class=" btn cancelar" href="index.php?p=<?php echo base64_encode("gestion_productos"); ?>">Cancelar</a> 
             
 
 
@@ -78,6 +79,6 @@
   </div>
   </div>
   <div class="col-sm-12 col-md-5 col-lg-3 menurapido">
-  <img src="recursos/logos/logo.png" class="img-responsive" alt="Cinque Terre">
+  <div class="col-md-4 col-lg-1 ">
 </div>
 </div>
